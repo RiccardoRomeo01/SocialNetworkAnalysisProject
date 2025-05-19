@@ -1,0 +1,124 @@
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+
+\documentclass[12pt, a4paper]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\setlength\parindent{0pt}
+\usepackage{mathptmx}
+\usepackage{amsmath,amssymb}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp}
+\usepackage{pgfplots}
+\usepackage{verbatim}
+
+\author{Mattia Buzzoni, Artificial Intelligence Master Degree, ID number (matricola)
+\\Leonardo Mannini, Artificial Intelligence Master Degree, ID number (matricola)
+\\ Mirko Mornelli, Artificial Intelligence Master Degree, 0001113084
+\\Riccardo Romeo , Artificial Intelligence Master Degree, ID number (matricola)
+\\Diego Rossi, Artificial Intelligence Master Degree, ID number (matricola)}
+\date{}
+\title{Games of Thrones}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+\label{introduction}
+\begin{comment}
+(The history of the 5 books)
+The context includes: the general field (e.g., literature, history,
+archaeology, tourism, biology, forensics, religious studies); the
+specific application (e.g., literary analysis, quantitative history,
+genetics, virology, forensics intelligence, tourism planning, biblical
+quantitative studies).
+\end{comment}
+Literature is a broad and multifaceted field that reflects the complexity of human society and imagination. Among its many subdomains, narrative fiction—especially epic fantasy—offers rich ground for structural and character-based analysis. The series A Song of Ice and Fire, written by George R. R. Martin, represents one of the most intricate examples of contemporary fantasy literature. Its dense network of characters, shifting alliances, and multilayered plots makes it a fascinating subject of both literary and computational investigation. 
+This project falls within the scope of digital literary studies, and more specifically in the intersection between narrative analysis and network science. The work focuses on the social structures embedded in A Song of Ice and Fire, analyzing character interactions across the five published books of the saga. These volumes present an ever-expanding universe populated by hundreds of characters, each with a role in a larger political and personal drama.
+
+To uncover the underlying structure of these character interactions, we apply Social Network Analysis (SNA) techniques, which allow us to model the narrative as a graph where characters are nodes and their interactions are edges. By examining these networks using computational tools, we aim to gain quantitative insights into the narrative architecture of the saga. In particular, we investigate the evolution of character importance, community structures, and connectivity patterns over the course of the five books.
+
+Through this interdisciplinary approach, the project seeks not only to explore the rich world of these books from a novel analytical perspective but also to validate the use of network-based methodologies in the study of complex literary works.
+
+
+\section{Problem and Motivation}
+\label{problem-and-motivation}
+(Identifying the importance of the characters in the 5 books)
+What are the problems you want to address? Why are those problems
+important (impact, theoretical and/or practical needs, etc.)? What are
+the main contributions of the project?
+
+\section{Datasets}
+\label{datasets}
+\begin{comment}
+(Python Colab Notebook, GameOfThrones dataset public on kaggle)
+How did you gather the data? Did you digitise it? How? Is the material
+publicly available? What tools did you use 1) to handle (store,
+manipulate) the data and 2) to compute measures on the data?
+\end{comment}
+The dataset used in this project is a publicly available resource from Kaggle, titled Game of Thrones Network. It provides a structured representation of character interactions across the first five books of the series. Each file corresponds to a specific book and contains a list of interactions between characters, represented as pairs of names. An interaction is defined as the co-occurrence of two characters within a 15-word window in the narrative text. While this methodological choice may appear somewhat arbitrary, it is a widely adopted approach in co-occurrence analyses and allows for the inclusion of a broad range of both direct and indirect interactions.
+
+\begin{table}[ht] \centering
+\begin{tabular}{lcccccc}
+\hline
+\textbf{} & \textbf{Book 1} & \textbf{Book 2} & \textbf{Book 3} & \textbf{Book 4} & \textbf{Book 5} & \textbf{All Books} \\
+\hline
+Nodes & 187 & 259 & 303 & 274 & 317 & 796 \\
+Edges & 684 & 775 & 1008 & 682 & 760 & 2823 \\
+\hline
+\end{tabular}
+\end{table}
+
+For each book, a social network was constructed using the Python library networkx, with preprocessing steps applied to standardize character names and consolidate interactions. The resulting networks are undirected and unweighted graphs, where nodes represent characters and edges represent their narrative co-occurrences.
+
+Although the dataset was created by a community user rather than an official source, it exhibits a consistent and well-structured format. The methodology employed aligns with common practices in computational literary analysis and effectively captures the complex network of relationships present in the books. Nevertheless, it is important to acknowledge that the adopted criteria may occasionally include interactions that are not narratively significant. To address this, we applied filtering and qualitative validation steps during our analysis to ensure that the extracted relationships align with the narrative structure and plot development of the original text.
+
+
+\section{Validity and Reliability}
+\begin{comment}
+(Spiegare il fatto che il dataset sia cotruito da un utente di Kaggle e quindi puo' essere non preciso, ma osservare anche che essendo preso da Kaggle ha soprattutto dopo il calcolo delle metriche abbiamo comunque osservato che c'e' coerenza con quanto scritto nei libri. clique servono come conferma della coerenza del dataset con la trama dei 5 libri)
+How closely does the model of your dataset represent reality (validity)?
+How does the way you treat the data affect the reproducibility of the study (reliability)?
+\end{comment}
+\label{validity-and-reliability-not-needed-for-the-project-proposal}
+Validity, crucial in measuring how accurately the data represent the plot of the five books, cannot be attested with complete certainty, as the dataset was built and uploaded by a Kaggle user. 
+In fact, the methodology followed when collecting the information can be questioned as the choice for what an interaction between two characters is determined by can be viewed as quite arbitrary. To be exact, two characters are deemed as interacting in the dataset when they both appear in fifteen words of the narration. Nevertheless, since we made known that the dataset is sourced from Kaggle (a platform known for its reliable and reviewed datasets) a certain level of accuracy can be assumed. \\
+The decision to proceed with this dataset was pursued as correspondences to the books were observed, not only in our early findings during the network analysis but even when implementing more specific metrics. A high-level of consistency was found between the relationship established by the characters in the books and the way the same characters are represented in the graphs.
+Therefore, this qualitative control is helpful to validate how the database is built.
+Some examples of metrics we have used as implements to support validity are cliques and k-cores, for which the resulting subgraphs are easily interpretable by experts as coherent with the narrative progression of the books.
+A specific setting in which affinity to the plot development can be observed is analyzing the 10-core for the second book, in which all the characters that are part of the Kingsguard are present. \\
+\\
+{\fontsize{8}{11}\selectfont 10-Core for the second book: Amory Lorch, Chiswyck, Joffrey Baratheon, Sandor Clegane, Renly Baratheon, Sansa Stark, Polliver, Dunsen, Eddard Stark, Gregor Clegane, Meryn Trant, Rafford, Arya Stark, Ilyn Payne, Stannis Baratheon, Cersei Lannister, Jaime Lannister, Robb Stark, Tywin Lannister, Catelyn Stark, Robert Baratheon, Tyrion Lannister, Tickler.}
+\\
+
+The reliability, hence the reproducibility of our study, can instead be considered high, since the dataset is available on the Kaggle platform and easy to download in .csv format.\\ 
+The data preprocessing steps executed to manipulate and reorganize data should be easily reproducible, as we have exploited some of the most known Python libraries for network analysis. 
+In addition, the Python notebook developed for the network analysis is publicly available on GitHub, for a further explanation of how we have implemented each of the functions for the study and in-depth data visualization.
+\section{Measures and Results}
+\label{measures}
+(Centrality metrics: tengono conto di quante volte un nodo e' connesso con gli altri. \textbf{Eigen vector centrality} tiene conto di quanto un nodo e' connesso ad altri nodi che contano quindi riesce a identificare i personaggi piu' importanti, pero' simile alla degree centrality nel nostro caso perche' abbiamo diversi personaggi centrali che rappresentano i protagonisti, nel nostro caso non esiste un main characters. Kathz centrality risolve un problema della eigen vector centrality per i grafi diretti ma noi non abbiamo grafi diretti quindi ha quasi le stesse caratteristiche della eigen vector centrality [si puo' inserire solo con informazione del fatto che a noi non serve ma e' stata calcolata].
+\textbf{Closeness centrality}: cerca di identificare un main character perche' un protagonista e' piu' probabile che sia collegato ai diversi personaggi secondari [simila a eigen vector centrality].
+\textbf{Betweeness centrality}: collega diversi punti di controllo, personaggio intermedio tra altri, quindi in contatto con piu' personaggi anche se non principale.
+\medskip
+Cluster: \textbf{Cliques} sono il set di personaggi che sono tutti cooccorrenti tra loro, )
+What measures did you apply (brief explanation of how they work)? How do
+they relate to the intent of the study? Why are they relevant? What is the connection among the gathered data, the applied measures,
+and the properties found?
+
+\section{Conclusion}
+\label{conclusion}
+
+Qualitative analysis of the quantitative findings of the study.
+
+\section{Critique}
+\label{critique}
+
+Do you think your work solves the problem presented above? To which
+extent (completely, what parts)? Why? What could you have done
+differently to answer your research problems (e.g., gather data with
+additional information, build your model differently, apply alternative
+measures)?
+
+\end{document}
+
