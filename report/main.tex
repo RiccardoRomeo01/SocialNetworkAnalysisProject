@@ -17,7 +17,7 @@
 \\Leonardo Mannini, Artificial Intelligence Master Degree, ID number (matricola)
 \\ Mirko Mornelli, Artificial Intelligence Master Degree, 0001113084
 \\Riccardo Romeo , Artificial Intelligence Master Degree, ID number (matricola)
-\\Diego Rossi, Artificial Intelligence Master Degree, ID number (matricola)}
+\\Diego Rossi, Artificial Intelligence Master Degree, 0001138652}
 \date{}
 \title{Games of Thrones}
 
@@ -82,19 +82,20 @@ How closely does the model of your dataset represent reality (validity)?
 How does the way you treat the data affect the reproducibility of the study (reliability)?
 \end{comment}
 \label{validity-and-reliability-not-needed-for-the-project-proposal}
-Validity, crucial in measuring how accurately the data represent the plot of the five books, cannot be attested with complete certainty, as the dataset was built and uploaded by a Kaggle user. 
+Validity, crucial in measuring how accurately the data represent the plot of the five books, cannot be attested with complete certainty, as the dataset was built and uploaded by a Kaggle user.
 In fact, the methodology followed when collecting the information can be questioned as the choice for what an interaction between two characters is determined by can be viewed as quite arbitrary. To be exact, two characters are deemed as interacting in the dataset when they both appear in fifteen words of the narration. Nevertheless, since we made known that the dataset is sourced from Kaggle (a platform known for its reliable and reviewed datasets) a certain level of accuracy can be assumed. \\
 The decision to proceed with this dataset was pursued as correspondences to the books were observed, not only in our early findings during the network analysis but even when implementing more specific metrics. A high-level of consistency was found between the relationship established by the characters in the books and the way the same characters are represented in the graphs.
 Therefore, this qualitative control is helpful to validate how the database is built.
 Some examples of metrics we have used as implements to support validity are cliques and k-cores, for which the resulting subgraphs are easily interpretable by experts as coherent with the narrative progression of the books.
-A specific setting in which affinity to the plot development can be observed is analyzing the 10-core for the second book, in which all the characters that are part of the Kingsguard are present. \\
+A specific setting in which affinity to the plot development can be observed is found analyzing the 11-core for the second book, in which all the characters that are part of the Kingsguard are present. \\
 \\
-{\fontsize{8}{11}\selectfont 10-Core for the second book: Amory Lorch, Chiswyck, Joffrey Baratheon, Sandor Clegane, Renly Baratheon, Sansa Stark, Polliver, Dunsen, Eddard Stark, Gregor Clegane, Meryn Trant, Rafford, Arya Stark, Ilyn Payne, Stannis Baratheon, Cersei Lannister, Jaime Lannister, Robb Stark, Tywin Lannister, Catelyn Stark, Robert Baratheon, Tyrion Lannister, Tickler.}
+{\fontsize{9}{11}\selectfont 11-Core for the second book: Amory Lorch, Tickler, Cersei Lannister, Polliver, Chiswyck, Joffrey Baratheon, Gregor Clegane, Meryn Trant, Rafford, Sandor-Clegane, Ilyn Payne, Dunsen.
+}
 \\
 
 The reliability, hence the reproducibility of our study, can instead be considered high, since the dataset is available on the Kaggle platform and easy to download in .csv format.\\ 
 The data preprocessing steps executed to manipulate and reorganize data should be easily reproducible, as we have exploited some of the most known Python libraries for network analysis. 
-In addition, the Python notebook developed for the network analysis is publicly available on GitHub, for a further explanation of how we have implemented each of the functions for the study and in-depth data visualization.
+In addition, the Python notebook developed for the network analysis is publicly available on GitHub, for a further explanation of how we have implemented each of the functions for the study and in-depth data visualization.
 \section{Measures and Results}
 \label{measures}
 (Centrality metrics: tengono conto di quante volte un nodo e' connesso con gli altri. \textbf{Eigen vector centrality} tiene conto di quanto un nodo e' connesso ad altri nodi che contano quindi riesce a identificare i personaggi piu' importanti, pero' simile alla degree centrality nel nostro caso perche' abbiamo diversi personaggi centrali che rappresentano i protagonisti, nel nostro caso non esiste un main characters. Kathz centrality risolve un problema della eigen vector centrality per i grafi diretti ma noi non abbiamo grafi diretti quindi ha quasi le stesse caratteristiche della eigen vector centrality [si puo' inserire solo con informazione del fatto che a noi non serve ma e' stata calcolata].
