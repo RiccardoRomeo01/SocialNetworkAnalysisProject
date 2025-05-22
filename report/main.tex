@@ -139,118 +139,124 @@ We also observe that the overall network structure evolves with each book, and t
 \end{figure}
 
 \subsection*{Cliques}
-We identified all cliques (fully connected subgraphs) in each book's network. The largest cliques occur in the earlier books, where the narrative brings many main characters together. For example, in Book 1 one of the largest cliques included Eddard Stark, King Robert, Queen Cersei, Prince Joffrey, Sansa Stark, Petyr Baelish, and others – corresponding to the gathering of major figures at Winterfell and later the King's Landing tournament. We also found family-based cliques. Notably, the Stark family form a clique in Book 1. In later books, cliques tend to be smaller as the story splits geographically; large all-encompassing gatherings are rarer. The cliques uncovered match known groups from the story (e.g. the Lannister siblings and their close associates form a clique in Book 2 during the court in King's Landing). This shows the data correctly captures close groups – whenever a set of characters all interact heavily, it appears as a clique, often aligning with narrative events like councils, feasts or family meetings. 
-A methodological point is that finding cliques is computationally expensive, but the networks here are moderate in size. We focused on the largest cliques (of size greather than 3) and meaningful ones (like family cliques), since a great many trivial small cliques (triangles) exist. What cliques reveal is the community structure at its most strict definition: they highlight factions or scenes where everyone knows everyone else. 
+We identified all cliques in each book's network. The largest cliques occur in the earlier books, where the narrative brings many main characters together. For example, in Book 1 one of the largest cliques included characters corresponding to the gathering of major figures at the King's Landing. We also found family-based cliques. Notably, the Stark family form a clique in Book 1. In later books, cliques tend to be smaller as the story splits geographically. This shows the data correctly captures close groups – whenever a set of characters all interact heavily, it appears as a clique, often aligning with narrative events like councils, feasts or family meetings. 
+We focused on the largest cliques (of size greather than 3) and meaningful ones (like family cliques), since a great many trivial small cliques (triangles) exist. What cliques reveal is the community structure at its most strict definition: they highlight factions or scenes where everyone knows everyone else. 
 
-A clique requires every possible edge to be present, which is a strong condition. Thus, many cohesive groups in the story that are missing one or two connections (almost cliques) won't appear as a full clique. For instance, if in a group of characters one pair never directly interacts, they won't form a clique, even if they function as a close group. We mitigated this by also examining k-cores and other measures for group cohesion. Nonetheless, clique analysis confirmed that the network representation picks up known close-knit groups, lending trustworthiness to the data extraction.
+A clique requires every possible edge to be present, which is a strong condition. Thus, many cohesive groups in the story won't appear as a full clique. We mitigated this by also examining k-cores and other measures for group cohesion. Nonetheless, clique analysis confirmed that the network representation picks up known close-knit groups, lending trustworthiness to the data extraction.
 
 \subsection*{K-cores}
 
-We performed a core decomposition to find k-cores, which are maximal subgraphs in which each character has at least k connections within that subgraph. This helps identify the "inner circle" of highly connected characters. In each book, we found a clear highest-order core. In Book 1 and Book 2, the highest core was of order 11 (an 11-core): for example, in Book 2 this 11-core contained ~12 characters centered on King Joffrey's court (essentially the Lannister family, the Kingsguard, and key council members in King's Landing). Every character in that subgraph has ties to at least 11 others in the group, reflecting how tightly the royal court characters interlink. By Book 3, the maximum core was slightly lower (a 10-core with ~11 nodes), and it drops further in Book 4 and 5 (e.g. only a 7-core in Book 4). This trend quantifies the narrative's structural change: Book 1–2 have a very interconnected core cast (many characters all interacting in one place), whereas later books fragment the cast, so you cannot find as large a group all mutually connected. 
+We performed a core decomposition to find k-cores. In each book, we found a clear highest-order core. In Book 1 and Book 2, the highest core was of order 11: for example, in Book 2 this 11-core contained ~12 characters centered on King Joffrey's court (essentially the Lannister family, the Kingsguard, and key council members in King's Landing). It reflects how tightly the royal court characters interlink. By Book 3, the maximum core was slightly lower (a 10-core with ~11 nodes), and it drops further in Book 4 and 5 (e.g. only a 7-core in Book 4). This trend quantifies the narrative's structural change: Book 1–2 have a very interconnected core cast (many characters all interacting in one place), whereas later books fragment the cast, so you cannot find as large a group all mutually connected. 
 
-The composition of the high-order cores aligns with major story factions. For instance, the Book 2, 11-core was composed entirely of characters in King's Landing (the Lannister siblings, Sansa Stark, members of the Kingsguard, etc., all of whom frequently interact with each other). Other plotlines (Robb Stark's army in the Riverlands, Daenerys in Essos) did not appear in that core because those characters don't have 11 or more mutual connections – they are outside the very dense social circle of the capital. In Book 1, the 11-core included characters from the early focal settings (the Stark family, King Robert and his retainers, etc.), again reflecting a convergence of storylines. 
+We found that the composition of the high-order cores aligns with major story factions.
 
-K-cores give a layered view of network density. The highest k-core in each book essentially isolates the most central clique of characters. We observed that these tend to be centered on political power hubs (court, major families). As k decreases, cores grow larger, bringing in progressively less-connected characters. This "peeling" of the network is instructive: for example, at k=1 we have the full network; at very high k (near the max degree) we see only a handful of elites. It shows that even though hundreds of characters exist, the books have a relatively small inner-core driving interactions (often <20 characters).
+K-cores give a layered view of network density. The highest k-core in each book essentially isolates the most central group of characters. We observed that these tend to be centered on political power hubs (court, major families). As k decreases, cores grow larger, bringing in progressively less-connected characters. It shows that even though hundreds of characters exist, the books have a relatively small inner-core driving interactions (often <20 characters).
 
-One limitation is that k-core analysis ignores edge weights and treats all connections equally: two characters who meet briefly count as much as those with repeated interactions. We used unweighted graphs for core calculation. Also, k-cores don't necessarily correspond exactly to narrative concepts of importance, they strictly capture connectivity. 
-For instance, a character who is pivotal but interacts with disparate groups (and thus doesn't have a high degree in one cluster) might not appear in a high core.
+One limitation is that k-core analysis ignores edge weights and treats all connections equally. Also, k-cores don't necessarily correspond exactly to narrative concepts of importance, they strictly capture connectivity. 
 
-K-core analysis supported that our network data is story-consistent: e.g. the cores we found contained coherent sets of characters (often all belonging to one locale or faction), reinforcing that interactions were correctly identified.
+In general, K-core analysis supported that our network data is story-consistent: e.g. the cores we found contained coherent sets of characters, reinforcing that interactions were correctly identified.
 
 
 \subsection*{K-components}
 
-We analyzed k-components, which relate to the network's structural cohesion. A k-component is a subgraph in which the removal of any (k-1) nodes does not disconnect the subgraph. In other words, it's a set of nodes with at least k independent paths between any two of them. This is a stringent measure of group robustness. 
+We analyzed k-components, which relate to the network's structural cohesion.
 
-The story networks exhibited many small 2-components (triangles and small loops), but no giant 2-component containing all main characters. This indicates that the network has articulation points – characters whose removal would break apart the graph. 
+The story networks exhibited many small 2-components, but no giant 2-component containing all main characters. This indicates that the network has articulation points – characters whose removal would break apart the graph. 
 We saw that most higher k-components were tiny groups of characters who form a fully interconnected cluster. 
 
-For example, in Book 1 we found a biconnected trio of King Robert's close companions: perhaps a set of three characters like Robert, Eddard, and Barristan Selmy (hypothetical example) who all interact; within that trio, no single character's removal isolates the others. We also identified small 2-components corresponding to secondary character groups
- Arya Stark in Book 4 forms a 2-component with two of her Braavos contacts ("Waif" and the Kindly Man): Arya interacts with each of them and they interact (as teacher and fellow acolyte), making a triangle. One significant 2-component in Book 5 was Bran Stark's cohort beyond the Wall – Bran, Meera Reed, Jojen Reed, Hodor, Coldhands, and the Three-Eyed Crow form a biconnected group; they are all in the same storyline, and they have multiple paths of interaction (e.g., they travel together and each pair interacts at some point), so that whole set is robustly connected. The presence of such 2-components indicates pockets of the narrative that are very cohesive. 
- 
-The lack of a large 2-component including all major characters means the narrative has key "single points of failure". Indeed, if you "remove" certain central characters (for example, Tyrion Lannister in the early books), many others would lose their only connection and the network would fall into components. In fact, our analysis showed that the main giant component of each book is held together in part by a few critical connectors (which ties in with our betweenness findings). The small higher-order components we found (triads, small cliques) correspond to tightly-knit subgroups – typically members of the same family or people jointly involved in a particular subplot. These are groups where everyone interacts with everyone (fully connected triangles/small circles), denoting very high cohesion within that subset. 
+For example, Arya Stark in Book 4 forms a 2-component with two of her Braavos contacts ("Waif" and the Kindly Man): Arya interacts with each of them and they interact (as teacher and fellow acolyte), making a triangle. One significant 2-component in Book 5 was Bran Stark's cohort beyond the Wall, forming a biconnected group; they are all in the same storyline, and they have multiple paths of interaction. 
 
-Many characters being in only 1-connected relationships is expected in a story – it doesn't necessarily mean a narrative weakness, it's just the nature of having singular protagonists linking groups. We mainly used k-components to confirm that beyond the obvious cliques, there aren't larger "redundant" structures – which indeed there are not. It reaffirmed that the story network is relatively tree-like in its global structure (lots of branches off a few trunk nodes). For practical purposes, focusing on 2-components was sufficient; 
-we found no non-trivial 3-component.
+The presence of such 2-components indicates pockets of the narrative that are very cohesive. 
+ 
+The lack of a large 2-component including all major characters means the narrative has key "single points of failure". Indeed, if you "remove" certain central characters (for example, Tyrion Lannister in the early books), many others would lose their only connection and the network would fall into components. In fact, our analysis showed that the main giant component of each book is held together in part by a few critical connectors (which ties in with our betweenness findings). The small higher-order components we found (triads, small cliques) correspond to tightly-knit subgroups – typically members of the same family or people jointly involved in a particular subplot.
+
+Our k-component analysis simply confirmed that, beyond the obvious cliques, the network contains no larger redundant sub-structures. Overall, the story graph is essentially tree-like: many branches extend from just a few trunk nodes. In practice, focusing on 2-components was enough, as we found no non-trivial 3-components.
 
 
 \subsection*{Local Clustering Coefficient}
-For each character, we calculated their local clustering coefficient, which measures how interconnected that character's neighbors are. This metric ranges from 0 (none of a character's neighbors know each other) to 1 (all neighbors also mutually interact). 
+For each character, we calculated their local clustering coefficient.
 
-We observed a wide range of LCC values, strongly dependent on a character's role. Major bridging characters had low clustering, whereas characters embedded in a single group had high clustering. For example, Eddard Stark in Book 1 had a moderate LCC – many of his acquaintances (e.g., Robert, Cersei, Littlefinger) also interact with each other at court, giving Ned a decent clustering, but not all (some of Ned's connections like Howland Reed or the executioner are unique to him). 
+We observed a wide range of LCC values, strongly correlated on a character's role. Major bridging characters had low clustering, whereas characters embedded in a single group had high clustering. 
 
-In general, we found that characters who only appear within one close setting (e.g., members of the same household or guards who always accompany the same lord) often had very high clustering coefficients. In contrast, characters who serve as go-betweens connecting different groups had low LCC because those sets of neighbors don't interact with each other except via Varys. 
-
-The LCC helps identify "brokers" vs "community members." A low clustering character is likely brokering between otherwise unlinked groups.
-
-Conversely, a high clustering character is often in a clique. 
+In general, we found that characters who only appear within one close setting (e.g., members of the same household) often had very high clustering coefficients. In contrast, characters who serve as go-betweens connecting different groups had low LCC because those sets of neighbors don't interact with each other. 
 
 We also looked at the average clustering: Book 1's average clustering coefficient was relatively higher than later books. This is intuitive since Book 1's main characters largely interact in one location (yielding interconnected neighbor sets). In later books, many characters have neighbors spread across disparate locales who never meet each other, lowering clustering. 
 
-One  consideration is that our co-occurrence network might count characters as "neighbors" if they are merely mentioned in the same chapter, even if they don't form a meaningful social tie. This can inflate clustering for characters present in ensemble scenes (because all those present get linked). We tried to focus on significant characters where co-occurrence implies actual interaction.
+One  consideration is that, our co-occurrence network might count characters as "neighbors" if they are merely mentioned in the same chapter, even if they don't form a meaningful social tie.
 
 \subsection*{Structural Equivalence} 
-We examined how similar characters are in terms of whom they interact with. Two extreme cases are structural equivalence (two characters share exactly the same set of neighbors) and, more generally, high neighborhood similarity (their interaction profiles overlap significantly). To compute this, we generated binary "neighbor vectors" for each character (indicating which other characters they interact with) and compared these vectors using metrics like the Jaccard coefficient, Pearson correlation, and Hamming distance. Findings: Perfect structural equivalence was rare, as expected in a rich story. However, we did find some nearly structurally equivalent pairs among minor characters. For example, in Book 1 the characters Wylla (a servant at Winterfell) and Jacks (a guardsman) never directly speak to each other, but they each only ever appear alongside the exact same set of other characters (specifically, they are both only present in scenes involving certain Winterfell staff and never outside those). Thus, their neighbor sets are identical, making them structurally equivalent in the network's eyes. Likewise, in Book 2, a trio of historical Targaryen princes (Aegon V, Daeron II, and Maekar I) are mentioned exclusively together in one anecdote; all three have the same neighbors (each other, and a couple of storyteller characters), so any pair of them is structurally equivalent. Beyond such trivial cases, no two major characters had identical neighbor sets. When we relaxed the criteria to consider high similarity (not necessarily 100%), we identified characters with very similar interaction patterns. One interesting example: Jaime Lannister and Cersei Lannister in Book 4 had a high neighbor overlap – both were primarily interacting with the same set of King's Landing figures (since in that book they share the setting and cast of characters). They are not structurally identical (each has a few contacts the other doesn't), but one can say their position in the network is similar. We also found that in Book 5, some of Stannis Baratheon's top commanders (e.g., Melisandre and Davos) have high neighborhood similarity: both connect Stannis to various northern lords and the Night's Watch, playing analogous roles. What this reveals: Structural and similarity equivalence measures highlight redundancy or role interchangeability in the story. Whenever we saw a Jaccard coefficient of 1 or Pearson correlation of 1 between two characters, it almost always corresponded to either (a) minor characters who always appear together and essentially function as a unit (for instance, two guards who are always guarding the same person), or (b) "mirror" characters in different story threads who interact with analogous groups. The analysis didn't show any pair of major independent characters being extremely similar – which makes sense, since each protagonist has a unique journey. But it did flag cases like the two young Baratheon princes (mentioned in history) or the interchangeable Frey brothers in Robb Stark's army, which tells us the network contains some duplicate nodes in terms of connections (the story might not need both, narratively). Limitations: A caution is that our similarity analysis is based on co-occurrence data, which can sometimes conflate narrative roles. Two characters might appear in all the same scenes simply because they're physically together, not necessarily because they serve the same plot function – though often in minor characters those coincide (e.g., two White Harbor knights always travel as a pair). Also, the Pearson correlation approach can be influenced by degree differences – we mostly used it to confirm what Jaccard showed or to catch cases Jaccard missed (like two characters with no common neighbors but a pattern of connections that is proportionally similar). We found that in practice the top similarities were straightforward to interpret (mostly trivial co-travelers). In a more complex social network one might uncover hidden role equivalences, but in this narrative network, roles are strongly tied to unique characters. Regular equivalence (see below) further generalized this idea of role similarity.
+We examined how similar characters are in terms of whom they interact with. To compute this, we used metrics like the Jaccard coefficient, Pearson correlation, and Hamming distance. 
+
+We found that perfect structural equivalence was rare. However, in Book 2, a trio of historical Targaryen princes (Aegon V, Daeron II, and Maekar I) are mentioned exclusively together in one anecdote; all three have the same neighbors, so any pair of them is structurally equivalent. 
+The analysis didn't show any pair of major independent characters being extremely similar – which makes sense, since each protagonist has a unique journey. 
+
+One caveat is that our similarity analysis rests on co-occurrence data, which can blur narrative roles. Two characters may appear in every scene together simply because they travel side by side, not because they serve the same plot function. Pearson correlation is also sensitive to differences in degree, so we used it mainly to validate what Jaccard revealed or to catch cases Jaccard missed.
+
+We found that the top-ranked similarities were straightforward to interpret—mostly obvious co-travelers.
 
 \subsection*{Jaccard Coefficient}
 
-To capture how similar two characters' social circles are, we computed the Jaccard coefficient for every pair of nodes, defined as the ratio between the number of shared neighbours and the total number of distinct neighbours they have.  A score of 1.0 means two characters interact with exactly the same set of people, while 0.0 means their contacts never overlap.
-Across all five books, the pairs with the maximum value 1.0 are almost exclusively minor figures who always appear together in a single scene or locale—e.g.\ \textit{Wylla–Varly}, \textit{Wylla–Tregar} and other Winterfell servants in Book 1, or \textit{Robert Arryn–Trystane Martell} (both merely referenced in one council scene) in Book 2.
+To measure how much two characters’ social circles overlap, we computed the
+Jaccard coefficient for every pair of nodes.
 
-Because these walk-on characters are mentioned only in the company of the same handful of major protagonists,
- they inherit identical neighbourhoods and thus appear structurally interchangeable.  
-In other words, a perfect Jaccard score points to characters who are basically duplicates in terms of their connections,
- they don't have unique roles, but just appear alongside the same main characters to fill out the background.
+The very few pairs that reach the maximum value of 1.0 are almost always
+walk-on figures who appear together in a single scene or locale—for example,
+\textit{Robert Arryn–Trystane Martell}, both merely mentioned in one small
+council meeting in Book 2.  Because these cameo characters are seen only in the
+company of the same handful of protagonists, they inherit identical
+neighbourhoods and are effectively interchangeable background.
 
-Instead, pairs with a coefficient of 0.0—for instance \textit{Addam Marbrand} versus almost any peripheral Night's Watch ranger—belong to completely separate storylines and never share a chapter.  Large blocks of zero-overlap pairs therefore quantify the strong modularity of the saga: characters rooted in King's Landing politics have no common neighbours with those beyond the Wall or in Essos until much later in the narrative.
+Conversely, pairs with a coefficient of 0.0—such as \textit{Addam Marbrand}
+versus almost any peripheral Night’s Watch ranger—belong to storylines that
+never intersect.  The large volume of zero-overlap pairs quantifies the
+saga’s strong modularity: until later books, characters rooted in King’s
+Landing politics have no common neighbours with those beyond the Wall or in
+Essos.
 
-Taken together, the distribution of Jaccard values reinforces two points about the network.
-First, the extremely high scores cluster on peripheral nodes, confirming that "cameo" characters are weakly embedded and derive their few links from co-occurring with a single protagonist.
-Second, the abundance of zero scores shows how sharply the plot splits into parallel communities, especially in earlier books where geographical distance keeps casts disjoint.
-Methodologically, the Jaccard coefficient is thus useful both for spotting duplicate minor roles that could be collapsed in a simplified graph and for mapping the boundaries between major narrative arcs.
-\subsection*{Pearson Correlation} 
-The Pearson correlation coefficient looks at how similar two characters' "friend lists"
- are across the whole graph: a value of +1 means their sets of neighbours 
- rise and fall in perfect pace, while numbers near 0 (or negative) show 
- that the two characters move in very different circles. In our networks the pairs
-  that hit +1 are almost always accompanying roles who only ever appear together
-   the same major figures., they are essentially background characters,  
-   but never build connections of their own. At the opposite end, the strongly negative
-    (or very low) scores belong to leading or secondary characters such as Tyrion, Jon,
-	 Daenerys and Catelyn. These protagonists operate in storylines that are geographically
-	 and socially far apart, so each gathers a unique entourage; the lack of overlap in their 
-	 neighbourhoods drives the correlation down, showing how the narrative 
-	 keeps its headline plots in distinct regions until the stories come together.
+Taken together, the distribution of Jaccard values reveals two key features
+of the network.  First, extremely high scores cluster on peripheral nodes,
+confirming that cameo characters are weakly embedded and gain their few links
+solely from co-occurring with a single protagonist.  Second, the abundance of
+zero scores maps the sharp boundaries between parallel narrative communities.
+
+\subsection*{Pearson Correlation}
+
+In our network the rare pairs that reach \(+1\) are almost always
+walk-on figures who surface only alongside the same major characters.  
+They serve as interchangeable background and never forge ties of their own.
+
+At the other extreme, strongly negative—or near-zero—correlations arise
+between protagonists such as Tyrion, Jon, Daenerys and Catelyn.
+These leading characters act in storylines that are geographically and
+socially isolated, each assembling a distinct entourage.
+
+Thus, Pearson correlation does not underlie any important information with respect to the Jaccard Coefficient.
+
 \subsection*{Hamming Distance}
 
-The Hamming distance between two characters is just the number of positions where their strings are different.
-If the distance is high, the two characters have very different contact lists; if it is zero, they always meet exactly the same people.
-
-We see that the biggest distances are almost always between main heroes who live in separate story lines.
-In Book 1 the pair Eddard – Daenerys has a huge distance because Ned stays in Westeros while Dany is far away in Essos, so their neighbour sets never overlap.
+Computing the Hamming Distance, we see that the biggest distances are almost always between main characters who live in separate story lines.
+In Book 1 the pair "Eddard – Daenerys" has a huge distance.
 Later books show the same pattern: Tyrion vs Jon, or Daenerys vs Stannis, get the top scores because each one moves with a unique group of allies and enemies.
 
-On the opposite side, walk-on characters that appear together in the same single scene get a distance of zero (they share the exact same neighbours).
-So, like with Pearson and Jaccard, Hamming distance confirms that extras are clones in the graph, while protagonists are separated by their own, very different social circles.
+On the opposite side, walk-on characters that appear together in the same single scene get a distance of zero.
+
+
+So, the Hamming Distance confirms what we have found previously.
 
  
-\subsection*{Regular Equivalence} 
-Regular equivalence generalizes structural equivalence to the idea of "playing similar roles" in the network,  even if not interacting with the exact same individuals.
-Regular equivalence looks at the graph from a role-oriented point of view: two characters are considered similar when each of them is linked to neighbours that, in turn, play comparable roles.
-To measure it we start with a similarity matrix $\sigma$ whose diagonal is one (a node is always identical to itself) and whose off-diagonal entries are zero.
-At every step we apply the update rule $\sigma \leftarrow \alpha\,A\,\sigma\,A^{\top}$, where A is the adjacency matrix of the network and $\alpha$ is a damping constant small enough to guarantee convergence; after each multiplication we reset the diagonal to one.
-A few iterations are sufficient for $\sigma$ to stabilise, and the final values tell us how strongly each pair of characters mirrors one another.
+\subsection*{Regular Equivalence}
 
-The ranking produced by this procedure matches the narrative in an intuitive way.
-In Book1 the strongest equivalence is between Eddard Stark and Robert Baratheon, because both sit at the centre of the same political block in King's Landing—the king and his Hand share almost the same collection of allies and enemies.
-The next highest scores involve Cersei, whose position inside the royal triangle makes her structurally close to both Eddard and Robert.
-Moving to Book2, the algorithm identifies Tyrion and Joffrey as the most equivalent pair: Tyrion governs as acting Hand while Joffrey wears the crown, so they interact with virtually the same set of courtiers, guards and hostages.
-Cersei naturally remains near them, and even Stannis appears with a high score because, as a rival claimant, he reproduces the same "kingly" pattern in his own faction.
-Book3 keeps this Lannister cluster at the top but now adds Jaime, whose return to court gives him a neighbourhood almost indistinguishable from his siblings'.
-In Book4 the leadership template shifts to Cersei, Tommen and Margaery: the child-king and the two competing queens form a triad where every vertex is structurally tied to the other two and to the same Tyrell–Lannister power web.
-Finally, Book~5 exports the same royal scheme to Meereen, with Daenerys at the centre.  Her closest equivalents are Hizdahr, who becomes her political husband, and Barristan, who replaces Jorah as chief advisor; Quentyn, Daario and the other Meereenese notables score slightly lower but still reflect the same courtly role.
+Our regular-equivalence analysis shows that each novel in A Song of Ice and Fire re-deploys a small set of structural templates—kings and queens, counsellors, heirs, and pretenders—even as the action shifts across continents.
+
+ \begin{itemize}
+     \item Book 1. The strongest equivalence links Eddard Stark and Robert Baratheon. Cersei Lannister scores next, her place in the royal triangle making her structurally close to both Eddard and Robert.
+     \item Book 2. Tyrion and Joffrey emerge as the most equivalent pair: Tyrion rules as Acting Hand while Joffrey wears the crown, so they interact with virtually the same courtiers and guards.
+     \item Book 4. Leadership is recast as a triad of Cersei, Tommen, and Margaery. The child-king and the two rival queens are tightly coupled to one another and to the shared Lannister–Tyrell power web.
+     \item Book 5. The same royal pattern is transplanted to Meereen. At the centre stands Daenerys, whose closest equivalents are Hizdahr and Barristan. Quentyn, Daario.
+ \end{itemize}
 
 These patterns show that, even when the plot moves across continents, the social graph keeps re-using a limited set of structural templates—kings and queens, counsellors, heirs, pretenders-and regular equivalence is able to detect those templates automatically.
+
 \subsection*{Homophily - Assortative Mixing}
 
 Homophily in our networks has been measured through the degree assortative coefficient, that is, the Pearson correlation between the degrees of the two endpoints of every edge.
