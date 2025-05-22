@@ -12,126 +12,486 @@
 \usepackage{textcomp}
 \usepackage{pgfplots}
 \usepackage{verbatim}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\graphicspath{{img-tables/}}
 
-\author{Mattia Buzzoni, Artificial Intelligence Master Degree, ID number (0001145667)
-\\Leonardo Mannini, Artificial Intelligence Master Degree, ID number (matricola)
-\\ Mirko Mornelli, Artificial Intelligence Master Degree, 0001113084
-\\Riccardo Romeo , Artificial Intelligence Master Degree, ID number (matricola)
-\\Diego Rossi, Artificial Intelligence Master Degree, 0001138652}
-\date{}
-\title{Games of Thrones}
+\author{Mattia Buzzoni, Artificial Intelligence Master Degree, ID number 0001145667
+\\Leonardo Mannini, Artificial Intelligence Master Degree, ID number 
+\\Mirko Mornelli, Artificial Intelligence Master Degree, ID number 0001113084
+\\Riccardo Romeo, Artificial Intelligence Master Degree, ID number 0001145681
+\\Diego Rossi, Artificial Intelligence Master Degree, ID number 0001138652}
+\date{05-23-2025}
+\title{A Song of Ice and Fire}
 
 \begin{document}
 \maketitle
 
 \section{Introduction}
 \label{introduction}
-\begin{comment}
-(The history of the 5 books)
-The context includes: the general field (e.g., literature, history,
-archaeology, tourism, biology, forensics, religious studies); the
-specific application (e.g., literary analysis, quantitative history,
-genetics, virology, forensics intelligence, tourism planning, biblical
-quantitative studies).
-\end{comment}
-Literature is a broad and multifaceted field that reflects the complexity of human society and imagination. Among its many subdomains, narrative fiction—especially epic fantasy—offers rich ground for structural and character-based analysis. The series A Song of Ice and Fire, written by George R. R. Martin, represents one of the most intricate examples of contemporary fantasy literature. Its dense network of characters, shifting alliances, and multilayered plots makes it a fascinating subject of both literary and computational investigation. 
-This project falls within the scope of digital literary studies, and more specifically in the intersection between narrative analysis and network science. The work focuses on the social structures embedded in A Song of Ice and Fire, analyzing character interactions across the five published books of the saga. These volumes present an ever-expanding universe populated by hundreds of characters, each with a role in a larger political and personal drama.
+The analysis of narrative structures is a wide field that shows the complexity of human society and imagination. A specific area, narrative fiction, especially epic fantasy, is a good source for analyzing structures and characters. The series A Song of Ice and Fire by George R. R. Martin is a very complex example of modern fantasy. Its large number of characters, changing alliances, and complex plots make it an interesting topic for both literary and computational study.
+This project is part of digital literary studies, combining narrative analysis and network science. We focus on the social structures in A Song of Ice and Fire, looking at character interactions in the five published books. These books describe a growing universe with hundreds of characters, each playing a part in a large political and personal story.
 
-To uncover the underlying structure of these character interactions, we apply Social Network Analysis (SNA) techniques, which allow us to model the narrative as a graph where characters are nodes and their interactions are edges. By examining these networks using computational tools, we aim to gain quantitative insights into the narrative architecture of the saga. In particular, we investigate the evolution of character importance, community structures, and connectivity patterns over the course of the five books.
+To understand the structure of these character interactions, we use Social Network Analysis (SNA). SNA lets us represent the story as a graph, where characters are nodes and their interactions are edges. By studying these networks with computational tools, we want to get quantitative information about the story's structure. Specifically, we look at how character importance, community structures, and connections change across the five books.
 
-Through this interdisciplinary approach, the project seeks not only to explore the rich world of these books from a novel analytical perspective but also to validate the use of network-based methodologies in the study of complex literary works.
-
+With this combined approach, our project aims to explore the rich world of these books from a new analytical viewpoint. We also want to show that using network-based methods is a valid way to study complex literary works.
 
 \section{Problem and Motivation}
 \label{problem-and-motivation}
-\begin{comment}
-	(Identifying the importance of the characters in the 5 books)
-	What are the problems you want to address? Why are those problems
-	important (impact, theoretical and/or practical needs, etc.)? What are
-	the main contributions of the project?
-	\section{Problem and Motivation}
-\end{comment}
-
 
 This project investigates the underlying structure of character interactions within the fantasy saga \textit{A Song of Ice and Fire}, focusing on the first five books of the series. The central aim is to explore how characters are positioned within the social landscape of the narrative and to assess their importance across different stages of the story. Unlike many traditional narratives with a single protagonist, this saga features a complex and distributed set of characters whose relevance varies considerably over time and context.
 
-The problem we seek to address is the difficulty of identifying and evaluating character centrality in such a fragmented and multi-perspective storyline. In a literary universe composed of hundreds of characters, each with their own alliances, roles, and trajectories, determining who the key figures are—and how these figures influence or connect with others—presents both a narrative and analytical challenge. This is particularly important in a work like \textit{A Song of Ice and Fire}, where shifts in power, betrayal, and character deaths play a crucial role in the progression of the plot.
+The problem we seek to address is the difficulty of identifying and evaluating character centrality in such a fragmented and multi-perspective storyline. In a literary universe composed of hundreds of characters, each with their own alliances, roles, and trajectories, determining who the key figures are and how these figures influence or connect with others, presents both a narrative and analytical challenge. This is particularly important in a work like \textit{A Song of Ice and Fire}, where shifts in power, betrayal, and character deaths play a crucial role in the progression of the plot.
 
 The motivation for this work lies in the potential of structural analysis to offer a deeper and more systematic understanding of narrative dynamics. By investigating which characters act as central nodes, which form cohesive groups, and how the overall structure evolves from one book to the next, we aim to provide insights that complement traditional literary interpretation. This approach enables a more objective reflection on character importance, the density of relationships, and the organization of fictional societies.
 
 The main contribution of the project is to map and analyze the evolving network of character interactions across the five books, highlighting patterns of centrality, influence, and group formation. Through this, we hope to shed light on the complex mechanisms of storytelling in epic fantasy and to demonstrate how structural perspectives can enrich our understanding of literary worlds.
-
 \section{Datasets}
 \label{datasets}
-\begin{comment}
-(Python Colab Notebook, GameOfThrones dataset public on kaggle)
-How did you gather the data? Did you digitise it? How? Is the material
-publicly available? What tools did you use 1) to handle (store,
-manipulate) the data and 2) to compute measures on the data?
-\end{comment}
-The dataset used in this project is a publicly available resource from Kaggle, titled Game of Thrones Network. It provides a structured representation of character interactions across the first five books of the series. Each file corresponds to a specific book and contains a list of interactions between characters, represented as pairs of names. An interaction is defined as the co-occurrence of two characters within a 15-word window in the narrative text. While this methodological choice may appear somewhat arbitrary, it is a widely adopted approach in co-occurrence analyses and allows for the inclusion of a broad range of both direct and indirect interactions.
 
-\begin{table}[ht] \centering
-\begin{tabular}{lcccccc}
-\hline
-\textbf{} & \textbf{Book 1} & \textbf{Book 2} & \textbf{Book 3} & \textbf{Book 4} & \textbf{Book 5} & \textbf{All Books} \\
-\hline
-Nodes & 187 & 259 & 303 & 274 & 317 & 796 \\
-Edges & 684 & 775 & 1008 & 682 & 760 & 2823 \\
-\hline
-\end{tabular}
-\end{table}
+The character network for Game of Thrones (the A Song of Ice and Fire novels) comes from a dataset available to the public. 
+This dataset creates connections (edges) between characters based on when their names appear close to each other in the text. 
 
-For each book, a social network was constructed using the Python library networkx, with preprocessing steps applied to standardize character names and consolidate interactions. The resulting networks are undirected and unweighted graphs, where nodes represent characters and edges represent their narrative co-occurrences.
+Specifically, an edge is made if two characters' names are within 15 words of each other in the books. 
+This method, called co-occurrence, was made popular by Beveridge and Shan's Network of Thrones study. 
+It's often used as a good way to guess if characters are in the same scene, talk to each other, or are mentioned together. 
 
-Although the dataset was created by a community user rather than an official source, it exhibits a consistent and well-structured format. The methodology employed aligns with common practices in computational literary analysis and effectively captures the complex network of relationships present in the books. Nevertheless, it is important to acknowledge that the adopted criteria may occasionally include interactions that are not narratively significant. To address this, we applied filtering and qualitative validation steps during our analysis to ensure that the extracted relationships align with the narrative structure and plot development of the original text.
+The 15-word window is meant to be small enough to show a direct connection but large enough to catch most immediate interactions. Any window size can seem a bit random and might not perfectly catch every detail of interactions (for example, quick mentions could be missed, or names that are not related but appear in a crowded part of the text might be linked). However, it gives a consistent way to define interactions from the text that others can repeat. Basically, a link in the network means there's a contextual relationship. This could mean that two characters talked to each other, talked about each other, or were mentioned together. The strength of a connection (its weight) is the number of times these co-occurrences (interactions) happen between two characters. 
+
+The dataset has CSV files (one for each book) that list pairs of character names and how many times they co-occur. Using this data, we built an undirected, weighted graph for each of the five books, and also a combined network for all books. Each character is a node, and an edge between two nodes means those characters were mentioned near each other in the text. The weight on each edge shows how many times the characters appear together. This acts as a measure of how strong their relationship is in the story (for example, characters who meet or talk often will likely have a higher weight).
 
 
+\subsection*{Data Collection and Pre-processing}
+
+The character-co-occurrence edge lists we analyse come from a community dataset on Kaggle entitled Game of Thrones Network.
+The dataset's author parsed the full text of the five published novels and recorded every pair of character names that occur within a 15-word sliding window.
+
+In our own notebook, we performed only light additional cleaning. 
+The combined graph has 796 nodes and 2 823 weighted edges.
+
+\subsection*{Tools Used}
+We used Python and its libraries for all data processing and analysis. Specifically, we used pandas for handling data and NetworkX for creating graphs and doing network analysis. We used other packages like Matplotlib for plotting.  All our code and processed data are available in a public GitHub repository.
 \section{Validity and Reliability}
-\begin{comment}
-(Spiegare il fatto che il dataset sia cotruito da un utente di Kaggle e quindi puo' essere non preciso, ma osservare anche che essendo preso da Kaggle ha soprattutto dopo il calcolo delle metriche abbiamo comunque osservato che c'e' coerenza con quanto scritto nei libri. clique servono come conferma della coerenza del dataset con la trama dei 5 libri)
-How closely does the model of your dataset represent reality (validity)?
-How does the way you treat the data affect the reproducibility of the study (reliability)?
-\end{comment}
-\label{validity-and-reliability-not-needed-for-the-project-proposal}
-Validity, crucial in measuring how accurately the data represent the plot of the five books, cannot be attested with complete certainty, as the dataset was built and uploaded by a Kaggle user.
-In fact, the methodology followed when collecting the information can be questioned as the choice for what an interaction between two characters is determined by can be viewed as quite arbitrary. To be exact, two characters are deemed as interacting in the dataset when they both appear in fifteen words of the narration. Nevertheless, since we made known that the dataset is sourced from Kaggle (a platform known for its reliable and reviewed datasets) a certain level of accuracy can be assumed. \\
-The decision to proceed with this dataset was pursued as correspondences to the books were observed, not only in our early findings during the network analysis but even when implementing more specific metrics. A high-level of consistency was found between the relationship established by the characters in the books and the way the same characters are represented in the graphs.
-Therefore, this qualitative control is helpful to validate how the database is built.
-Some examples of metrics we have used as implements to support validity are cliques and k-cores, for which the resulting subgraphs are easily interpretable by experts as coherent with the narrative progression of the books.
-A specific setting in which affinity to the plot development can be observed is found analyzing the 11-core for the second book, in which all the characters that are part of the Kingsguard are present. \\
-\\
-{\fontsize{9}{11}\selectfont 11-Core for the second book: Amory Lorch, Tickler, Cersei Lannister, Polliver, Chiswyck, Joffrey Baratheon, Gregor Clegane, Meryn Trant, Rafford, Sandor-Clegane, Ilyn Payne, Dunsen.
-}
-\\
 
-The reliability, hence the reproducibility of our study, can instead be considered high, since the dataset is available on the Kaggle platform and easy to download in .csv format.\\ 
-The data preprocessing steps executed to manipulate and reorganize data should be easily reproducible, as we have exploited some of the most known Python libraries for network analysis. 
-In addition, the Python notebook developed for the network analysis is publicly available on GitHub, for a further explanation of how we have implemented each of the functions for the study and in-depth data visualization.
+\label{validity-and-reliability}
+Because the dataset came from a user on Kaggle and not from official text notes, the data might not be perfectly accurate. Possible problems include missed co-occurrences, wrong edges, or names that are not consistent. Even with these issues, the dataset seems to be quite valid because its patterns match the known story of the books well. In fact, one of our goals was to check the dataset by seeing if known story structures appeared in the network analysis. 
+
+More than just qualitative checks, the dataset's reliability is supported by the fact that it can be reproduced and is consistent with other studies. This means anyone could create the co-occurrence network again from the original text and would 
+likely get a very similar list of connections. 
+
+
+For internal consistency, we made sure to do the analysis the same way for each book, we used the same metrics and algorithms 
+ for all five networks, with the same settings, so comparisons between books should be valid. In short, even if the dataset isn't perfect, 
+ the evidence shows it's accurate enough for a useful analysis: the network patterns that appear seem to reflect the Game of Thrones story, 
+ and the method can be repeated. 
+ 
+ These results show a clear consistency with the "A Song Of Ice And Fire" story, which makes us more confident that the dataset is valid and also reliable.
+ 
+ 
+
 \section{Measures and Results}
 \label{measures}
-(Centrality metrics: tengono conto di quante volte un nodo e' connesso con gli altri. \textbf{Eigen vector centrality} tiene conto di quanto un nodo e' connesso ad altri nodi che contano quindi riesce a identificare i personaggi piu' importanti, pero' simile alla degree centrality nel nostro caso perche' abbiamo diversi personaggi centrali che rappresentano i protagonisti, nel nostro caso non esiste un main characters. Kathz centrality risolve un problema della eigen vector centrality per i grafi diretti ma noi non abbiamo grafi diretti quindi ha quasi le stesse caratteristiche della eigen vector centrality [si puo' inserire solo con informazione del fatto che a noi non serve ma e' stata calcolata].
-\textbf{Closeness centrality}: cerca di identificare un main character perche' un protagonista e' piu' probabile che sia collegato ai diversi personaggi secondari [simila a eigen vector centrality].
-\textbf{Betweeness centrality}: collega diversi punti di controllo, personaggio intermedio tra altri, quindi in contatto con piu' personaggi anche se non principale.
-\medskip
-Cluster: \textbf{Cliques} sono il set di personaggi che sono tutti cooccorrenti tra loro, )
-What measures did you apply (brief explanation of how they work)? How do
-they relate to the intent of the study? Why are they relevant? What is the connection among the gathered data, the applied measures,
-and the properties found?
+To measure the roles and importance of characters in the network, we calculated several centrality measures and other graph metrics. Each of these measures shows a different side of a character's importance or position in the social network. Below, we will briefly explain each metric and then talk about what we found for each book and for the whole series.
 
+\subsection*{Degree Centrality}
+The easiest measure, degree centrality, is just the number of connections (edges) each node has. In our case, a character's degree is the number of other characters they co-occur with in the text. A high degree means the character interacts with or is mentioned with many others, making them a center of the network. For instance, if a character is in scenes with 10 different characters, their degree centrality is 10. This measure naturally shows a character's visibility and direct involvement in the story. In our study, Tyrion Lannister has the highest degree centrality (based on co-occurrence counts) in all five books. This means that, by this measure, Tyrion is connected to the most other characters (he has the biggest network of co-occurrences in the story). Tyrion's job as a counselor and his travels bring him into contact with many different characters (from Lannisters and Starks to the Night's Watch and Essos characters). This probably explains his consistently high degree. Other characters with high degree centrality are Eddard Stark in Book 1 (when, as Hand of the King, he interacts with many people in King's Landing) and Jon Snow in later books as his story at the Wall and beyond grows. Degree centrality gives a basic ranking of characters by how connected they are, but it doesn't look at who they are connected to.
+
+\subsection*{Eigenvector Centrality}
+Eigenvector centrality is a more advanced measure of influence. It looks at the quality of connections, not just the number. Basically, eigenvector centrality gives higher scores to nodes connected to other highly connected nodes. So, a character connected to many important characters will get a higher eigenvector score than one with the same number of connections but only to minor characters. This measure can show characters who are at the center of the main network groups. Our results for eigenvector centrality were very similar to the degree centrality rankings for the top characters – main characters like Tyrion, Jon Snow, Daenerys Targaryen, and Cersei Lannister scored high. This suggests that these characters not only have many connections but are also connecting to each other or to other key people, forming a close-knit core of important characters. On the other hand, a character like Daenerys is an interesting example: in the early books, her degree might be fairly high (she interacts with her Dothraki followers and a few others). But since those connections are mostly to minor or isolated characters (outside the main Westeros network), her eigenvector centrality was lower in the early story. As Daenerys's influence grows (and she starts interacting with more important characters by Book 5), her eigenvector centrality goes up. In short, eigenvector centrality helped confirm who the main influencers in the story are. It largely matched high-degree characters but gave extra proof that those characters are at the heart of the overall network.
+
+\subsection*{Katz Centrality}
+Katz centrality is an extension of eigenvector centrality: every character starts with a small baseline score and then gains additional influence from walks of length two, three, and so on, each step counting a little less than the previous one. PageRank, which follows exactly that logic, imagines a random reader who jumps from one co-occurrence edge to the next and tallies how often each character is visited. In an undirected graph like ours, Katz and PageRank give almost the same ordering, acting as a softened version of eigenvector centrality that can still reward someone who reaches the hubs through indirect paths.
+
+When we compute the measure on the full five-book network, Tyrion Lannister emerges as the first one,
+ with Jon Snow in a close second place. Immediately behind them come Jaime Lannister, Cersei Lannister, and Stannis Baratheon. Jon's score climbs book after book, reflecting how his storyline gradually connects the Night's Watch, the wildlings, the northern houses, and even the Iron Throne via correspondence. Tyrion, however, remains slightly ahead overall because his arc keeps him in contact with an exceptional variety of factions from the very beginning—royal court, riverlands armies, Essosi travellers, and more.
+
+The Katz/PageRank ranking therefore reinforces what simpler measures already indicated, 
+Tyrion and Jon dominate the narrative, but it adds something. 
+It shows Jon's influence catching up over time and highlights 
+characters such as Stannis and Arya, who do not have the 
+highest degree counts yet serve as effective conduits that
+ link otherwise distant parts of the network.
+
+
+\subsection*{Closeness Centrality}
+Closeness centrality measures how close a character is to all other characters in the network, based on graph distance. Officially, it's the inverse of the average shortest path length from one node to all other nodes. A character with high closeness centrality can reach every other character through just a few steps on average. Since closeness centrality uses shortest path calculations, it's usually calculated for connected graphs or within connected parts of a graph. For networks with many disconnected parts (which can happen in our book-specific networks, especially early on), the distances between nodes in different parts would be infinite. So, we focused our closeness analysis on the largest connected part of each book's network. This part usually has all the main characters from the central storylines. In that main part, we found that characters like Tyrion and Cersei Lannister often had some of the shortest average distances to others. This is logical: Tyrion interacts with many groups (giving him short paths to groups he doesn't know directly). Cersei is in a central place in King's Landing and interacts with various people (court, Tyrells, Martells by letter, etc.), so she's never far from any storyline. Interestingly, Littlefinger (Petyr Baelish) also had a fairly high closeness centrality in the early books. He has connections to the Starks (through Catelyn), the Lannisters (by serving on the council), and others, making him an almost universal connector in the network. So, closeness centrality highlighted characters who act as hubs connecting communities, though it mostly pointed to the same key people found by other measures. One drawback is that closeness doesn't explain why a character is close to others. For example, Varys the spymaster might be a short distance from all characters because he knows about everyone. But in the network, he seems close because he talks to many who then connect to others.
+
+\subsection*{Betweenness Centrality}
+Betweenness centrality measures how often a node is on the shortest path between any two other nodes. It effectively finds the ``bridge'' characters in the network – those who connect different communities or whose presence is key for information to flow in the network. A character with high betweenness centrality might not have the most connections, but they are at important points between storylines. Our betweenness analysis gave some of the most interesting results, as it pointed out a few characters we didn't expect. For example, Stannis Baratheon had the highest betweenness centrality in the combined five-book network. This result seems surprising at first – Stannis is a major character but fairly isolated (he doesn't interact with many other main characters besides his own followers). However, the network structure explains it: Stannis and his group form a bridge between the King's Landing storyline and the Wall (and later the northern conflict). If you ``remove'' Stannis and his connecting nodes, the network splits – his followers (Davos, Melisandre, etc.) and their interactions with other groups would be cut off. So, Stannis acts as a vital link between otherwise separate groups (the Baratheon royal family and the Night's Watch/Wildling storyline). This is exactly what betweenness centrality finds. Similarly, Petyr Baelish (Littlefinger) and Varys had high betweenness in earlier books, as expected for characters who plot across different houses – they connect the Stark/Lannister conflict with the Tyrells, the Vale, etc., through their schemes. Another example is Arya Stark in the middle books: Arya travels through various regions (from the Riverlands to Braavos), meeting very different characters. In doing so, she connects parts of the story that would otherwise be unrelated. This gives her a medium-high betweenness for her degree. So, betweenness centrality showed which characters might act as bridges in the story. It's worth noting that betweenness didn't always match perceived plot importance. Some very central characters by other measures (like Daenerys or Jon in certain books) have storylines that are fairly separate, so they don't score high on betweenness because they don't act as links between different groups. On the other hand, characters who move between groups (even minor characters like Davos Seaworth or Melisandre) can have high betweenness. This shows that each centrality measure reveals a different aspect of the story's social structure. There is no single ``right'' way to measure the most important character; instead, each measure highlights different kinds of importance (popularity, influence, reach, ability to connect groups) in the story.
+
+\subsection*{Central Characters Across Books}
+Looking at these measures for each book, we found several characters who are always central, as well as some changes that show how the story develops. Figure showing degree centrality) would list the top-ranked characters. A few names seem to be at the top of the network measures all the time: Tyrion Lannister and Jon Snow are the main ones. Tyrion, as we said, has the highest degree centrality (based on co-occurrence) in the comprehensive 5 books. This suggests he is the character with the most co-occurrences across the whole series. Jon Snow starts with a smaller group at Winterfell and then the Night's Watch, but he becomes more important. By the later books, he is among the top characters in degree and is said to have the highest PageRank of all. In fact, Tyrion and Jon are in the top 3 characters for almost every centrality measure we used, which shows their major roles in the story. The fact that different measures point to the same people suggests that by the middle to end of the series, the story focuses heavily on a few main characters. Other characters who are always near the top include Daenerys Targaryen, Cersei Lannister, and Arya Stark – all main characters with their own storylines. Daenerys, for example, becomes more connected (so her measures improve) as her dragons and army get attention from Westeros (characters start talking about or interacting with her messengers). Cersei is especially central in Book 4 (when she is a point-of-view character leading the King's Landing plot). This is shown by a jump in her centrality measures for that book. Arya's network importance grows when she is in Westeros (Books 1-3) and then lessens a bit when she goes to Braavos (where she is separate from the main characters). Our measures seem to show this too, with Arya having high centrality early on, then dropping when her story takes a different path.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{deg-cent-all.png}
+\caption{Degree Centrality for all Books.}
+\label{fig:deg_cent_all}
+\end{figure}
+
+We also observe that the overall network structure evolves with each book, and the centrality measures quantitatively reflect the shifts in narrative focus. In Book 1 (A Game of Thrones), Eddard ``Ned'' Stark is a central figure – he has one of the highest degrees and a very high betweenness (as the Hand of the King, Ned links the northern Stark family with the southern court, bridging two communities). Indeed, Ned Stark was arguably the protagonist of Book 1 and our analysis supports his importance: he ranks at or near the top in multiple metrics for that book. However, after Book 1 (following Ned's death), we see a redistribution of centrality. No single character completely replaces Ned as the main focal point; instead, the narrative branches out. Book 2 introduces multiple epicenters – Tyrion Lannister (as acting Hand) becomes a new political center, Jon Snow's storyline at the Wall gains prominence, and Robb Stark leads a campaign in the Riverlands. As a result, the network in Book 2 appears more decentralized. For instance, the degree centralization of the network, a measure of how much the network is dominated by a single central node (ranging from 0 for a regular graph to 1 for a perfect star graph), reportedly dropped from ~0.32 in Book 1 to ~0.18 in Book 2, reflecting a more distributed story where influence is less concentrated. By Book 3 (A Storm of Swords), many storylines converge due to the war: characters like Robb Stark and Tywin Lannister move to the forefront alongside Tyrion, Jon, and Daenerys. We see multiple high-centrality characters in Book 3, and interestingly, the metrics start to converge: the set of top characters by degree, eigenvector, and betweenness become more similar, as the narrative's main threads entwine (for example, Tyrion, Jon, and Daenerys are all top-ranked in several measures). In Book 4 (A Feast for Crows), the focus shifts mostly to King's Landing and the south (with Jon and Daenerys temporarily off-page or in separate volumes), so we note Cersei Lannister and Brienne of Tarth rising in centrality for that book. Cersei in Book 4 has one of the highest betweenness and degree values, because the entire political plot of that book revolves around her, and she interacts with many secondary characters (council members, Tyrells, etc.). Brienne, while not having the highest degree, has high betweenness in Book 4 as she physically travels and connects the King's Landing plot to the Riverlands (searching for Sansa, encountering various characters). Finally, Book 5 (A Dance with Dragons) brings back Tyrion, Jon, and Daenerys to prominence. In that book, Jon Snow achieves very high centrality: he interacts with Stannis's faction, the Night's Watch, wildlings, and via letters even communicates with Ramsay Bolton, making him a key bridge. Daenerys, too, has a high degree in Book 5 as many new characters (mercenaries, nobles of Meereen, etc.) connect to her. These trends are highlighted in Figure~\ref{fig:deg_cent_evolution}: for instance, Ned Stark's centrality line drops off after Book 1, while Tyrion's remains high throughout, and Jon's climbs toward Book 5. The dynamic nature of the network thus seems to mirror the narrative's progression – as characters are introduced or removed, or move to different locations, the network connectivity shifts accordingly.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{deg-cent-evolution.png}
+\caption{Degree Centrality evolution of the main characters through five books.}
+\label{fig:deg_cent_evolution}
+\end{figure}
+
+\subsection*{Cliques}
+We identified all cliques (fully connected subgraphs) in each book's network. The largest cliques occur in the earlier books, where the narrative brings many main characters together. For example, in Book 1 one of the largest cliques included Eddard Stark, King Robert, Queen Cersei, Prince Joffrey, Sansa Stark, Petyr Baelish, and others – corresponding to the gathering of major figures at Winterfell and later the King's Landing tournament. We also found family-based cliques. Notably, the Stark family form a clique in Book 1. In later books, cliques tend to be smaller as the story splits geographically; large all-encompassing gatherings are rarer. The cliques uncovered match known groups from the story (e.g. the Lannister siblings and their close associates form a clique in Book 2 during the court in King's Landing). This shows the data correctly captures close groups – whenever a set of characters all interact heavily, it appears as a clique, often aligning with narrative events like councils, feasts or family meetings. 
+A methodological point is that finding cliques is computationally expensive, but the networks here are moderate in size. We focused on the largest cliques (of size greather than 3) and meaningful ones (like family cliques), since a great many trivial small cliques (triangles) exist. What cliques reveal is the community structure at its most strict definition: they highlight factions or scenes where everyone knows everyone else. 
+
+A clique requires every possible edge to be present, which is a strong condition. Thus, many cohesive groups in the story that are missing one or two connections (almost cliques) won't appear as a full clique. For instance, if in a group of characters one pair never directly interacts, they won't form a clique, even if they function as a close group. We mitigated this by also examining k-cores and other measures for group cohesion. Nonetheless, clique analysis confirmed that the network representation picks up known close-knit groups, lending trustworthiness to the data extraction.
+
+\subsection*{K-cores}
+
+We performed a core decomposition to find k-cores, which are maximal subgraphs in which each character has at least k connections within that subgraph. This helps identify the "inner circle" of highly connected characters. In each book, we found a clear highest-order core. In Book 1 and Book 2, the highest core was of order 11 (an 11-core): for example, in Book 2 this 11-core contained ~12 characters centered on King Joffrey's court (essentially the Lannister family, the Kingsguard, and key council members in King's Landing). Every character in that subgraph has ties to at least 11 others in the group, reflecting how tightly the royal court characters interlink. By Book 3, the maximum core was slightly lower (a 10-core with ~11 nodes), and it drops further in Book 4 and 5 (e.g. only a 7-core in Book 4). This trend quantifies the narrative's structural change: Book 1–2 have a very interconnected core cast (many characters all interacting in one place), whereas later books fragment the cast, so you cannot find as large a group all mutually connected. 
+
+The composition of the high-order cores aligns with major story factions. For instance, the Book 2, 11-core was composed entirely of characters in King's Landing (the Lannister siblings, Sansa Stark, members of the Kingsguard, etc., all of whom frequently interact with each other). Other plotlines (Robb Stark's army in the Riverlands, Daenerys in Essos) did not appear in that core because those characters don't have 11 or more mutual connections – they are outside the very dense social circle of the capital. In Book 1, the 11-core included characters from the early focal settings (the Stark family, King Robert and his retainers, etc.), again reflecting a convergence of storylines. 
+
+K-cores give a layered view of network density. The highest k-core in each book essentially isolates the most central clique of characters. We observed that these tend to be centered on political power hubs (court, major families). As k decreases, cores grow larger, bringing in progressively less-connected characters. This "peeling" of the network is instructive: for example, at k=1 we have the full network; at very high k (near the max degree) we see only a handful of elites. It shows that even though hundreds of characters exist, the books have a relatively small inner-core driving interactions (often <20 characters).
+
+One limitation is that k-core analysis ignores edge weights and treats all connections equally: two characters who meet briefly count as much as those with repeated interactions. We used unweighted graphs for core calculation. Also, k-cores don't necessarily correspond exactly to narrative concepts of importance, they strictly capture connectivity. 
+For instance, a character who is pivotal but interacts with disparate groups (and thus doesn't have a high degree in one cluster) might not appear in a high core.
+
+K-core analysis supported that our network data is story-consistent: e.g. the cores we found contained coherent sets of characters (often all belonging to one locale or faction), reinforcing that interactions were correctly identified.
+
+
+\subsection*{K-components}
+
+We analyzed k-components, which relate to the network's structural cohesion. A k-component is a subgraph in which the removal of any (k-1) nodes does not disconnect the subgraph. In other words, it's a set of nodes with at least k independent paths between any two of them. This is a stringent measure of group robustness. 
+
+The story networks exhibited many small 2-components (triangles and small loops), but no giant 2-component containing all main characters. This indicates that the network has articulation points – characters whose removal would break apart the graph. 
+We saw that most higher k-components were tiny groups of characters who form a fully interconnected cluster. 
+
+For example, in Book 1 we found a biconnected trio of King Robert's close companions: perhaps a set of three characters like Robert, Eddard, and Barristan Selmy (hypothetical example) who all interact; within that trio, no single character's removal isolates the others. We also identified small 2-components corresponding to secondary character groups
+ Arya Stark in Book 4 forms a 2-component with two of her Braavos contacts ("Waif" and the Kindly Man): Arya interacts with each of them and they interact (as teacher and fellow acolyte), making a triangle. One significant 2-component in Book 5 was Bran Stark's cohort beyond the Wall – Bran, Meera Reed, Jojen Reed, Hodor, Coldhands, and the Three-Eyed Crow form a biconnected group; they are all in the same storyline, and they have multiple paths of interaction (e.g., they travel together and each pair interacts at some point), so that whole set is robustly connected. The presence of such 2-components indicates pockets of the narrative that are very cohesive. 
+ 
+The lack of a large 2-component including all major characters means the narrative has key "single points of failure". Indeed, if you "remove" certain central characters (for example, Tyrion Lannister in the early books), many others would lose their only connection and the network would fall into components. In fact, our analysis showed that the main giant component of each book is held together in part by a few critical connectors (which ties in with our betweenness findings). The small higher-order components we found (triads, small cliques) correspond to tightly-knit subgroups – typically members of the same family or people jointly involved in a particular subplot. These are groups where everyone interacts with everyone (fully connected triangles/small circles), denoting very high cohesion within that subset. 
+
+Many characters being in only 1-connected relationships is expected in a story – it doesn't necessarily mean a narrative weakness, it's just the nature of having singular protagonists linking groups. We mainly used k-components to confirm that beyond the obvious cliques, there aren't larger "redundant" structures – which indeed there are not. It reaffirmed that the story network is relatively tree-like in its global structure (lots of branches off a few trunk nodes). For practical purposes, focusing on 2-components was sufficient; 
+we found no non-trivial 3-component.
+
+
+\subsection*{Local Clustering Coefficient}
+For each character, we calculated their local clustering coefficient, which measures how interconnected that character's neighbors are. This metric ranges from 0 (none of a character's neighbors know each other) to 1 (all neighbors also mutually interact). 
+
+We observed a wide range of LCC values, strongly dependent on a character's role. Major bridging characters had low clustering, whereas characters embedded in a single group had high clustering. For example, Eddard Stark in Book 1 had a moderate LCC – many of his acquaintances (e.g., Robert, Cersei, Littlefinger) also interact with each other at court, giving Ned a decent clustering, but not all (some of Ned's connections like Howland Reed or the executioner are unique to him). 
+
+In general, we found that characters who only appear within one close setting (e.g., members of the same household or guards who always accompany the same lord) often had very high clustering coefficients. In contrast, characters who serve as go-betweens connecting different groups had low LCC because those sets of neighbors don't interact with each other except via Varys. 
+
+The LCC helps identify "brokers" vs "community members." A low clustering character is likely brokering between otherwise unlinked groups.
+
+Conversely, a high clustering character is often in a clique. 
+
+We also looked at the average clustering: Book 1's average clustering coefficient was relatively higher than later books. This is intuitive since Book 1's main characters largely interact in one location (yielding interconnected neighbor sets). In later books, many characters have neighbors spread across disparate locales who never meet each other, lowering clustering. 
+
+One  consideration is that our co-occurrence network might count characters as "neighbors" if they are merely mentioned in the same chapter, even if they don't form a meaningful social tie. This can inflate clustering for characters present in ensemble scenes (because all those present get linked). We tried to focus on significant characters where co-occurrence implies actual interaction.
+
+\subsection*{Structural Equivalence} 
+We examined how similar characters are in terms of whom they interact with. Two extreme cases are structural equivalence (two characters share exactly the same set of neighbors) and, more generally, high neighborhood similarity (their interaction profiles overlap significantly). To compute this, we generated binary "neighbor vectors" for each character (indicating which other characters they interact with) and compared these vectors using metrics like the Jaccard coefficient, Pearson correlation, and Hamming distance. Findings: Perfect structural equivalence was rare, as expected in a rich story. However, we did find some nearly structurally equivalent pairs among minor characters. For example, in Book 1 the characters Wylla (a servant at Winterfell) and Jacks (a guardsman) never directly speak to each other, but they each only ever appear alongside the exact same set of other characters (specifically, they are both only present in scenes involving certain Winterfell staff and never outside those). Thus, their neighbor sets are identical, making them structurally equivalent in the network's eyes. Likewise, in Book 2, a trio of historical Targaryen princes (Aegon V, Daeron II, and Maekar I) are mentioned exclusively together in one anecdote; all three have the same neighbors (each other, and a couple of storyteller characters), so any pair of them is structurally equivalent. Beyond such trivial cases, no two major characters had identical neighbor sets. When we relaxed the criteria to consider high similarity (not necessarily 100%), we identified characters with very similar interaction patterns. One interesting example: Jaime Lannister and Cersei Lannister in Book 4 had a high neighbor overlap – both were primarily interacting with the same set of King's Landing figures (since in that book they share the setting and cast of characters). They are not structurally identical (each has a few contacts the other doesn't), but one can say their position in the network is similar. We also found that in Book 5, some of Stannis Baratheon's top commanders (e.g., Melisandre and Davos) have high neighborhood similarity: both connect Stannis to various northern lords and the Night's Watch, playing analogous roles. What this reveals: Structural and similarity equivalence measures highlight redundancy or role interchangeability in the story. Whenever we saw a Jaccard coefficient of 1 or Pearson correlation of 1 between two characters, it almost always corresponded to either (a) minor characters who always appear together and essentially function as a unit (for instance, two guards who are always guarding the same person), or (b) "mirror" characters in different story threads who interact with analogous groups. The analysis didn't show any pair of major independent characters being extremely similar – which makes sense, since each protagonist has a unique journey. But it did flag cases like the two young Baratheon princes (mentioned in history) or the interchangeable Frey brothers in Robb Stark's army, which tells us the network contains some duplicate nodes in terms of connections (the story might not need both, narratively). Limitations: A caution is that our similarity analysis is based on co-occurrence data, which can sometimes conflate narrative roles. Two characters might appear in all the same scenes simply because they're physically together, not necessarily because they serve the same plot function – though often in minor characters those coincide (e.g., two White Harbor knights always travel as a pair). Also, the Pearson correlation approach can be influenced by degree differences – we mostly used it to confirm what Jaccard showed or to catch cases Jaccard missed (like two characters with no common neighbors but a pattern of connections that is proportionally similar). We found that in practice the top similarities were straightforward to interpret (mostly trivial co-travelers). In a more complex social network one might uncover hidden role equivalences, but in this narrative network, roles are strongly tied to unique characters. Regular equivalence (see below) further generalized this idea of role similarity.
+
+\subsection*{Jaccard Coefficient}
+
+To capture how similar two characters' social circles are, we computed the Jaccard coefficient for every pair of nodes, defined as the ratio between the number of shared neighbours and the total number of distinct neighbours they have.  A score of 1.0 means two characters interact with exactly the same set of people, while 0.0 means their contacts never overlap.
+Across all five books, the pairs with the maximum value 1.0 are almost exclusively minor figures who always appear together in a single scene or locale—e.g.\ \textit{Wylla–Varly}, \textit{Wylla–Tregar} and other Winterfell servants in Book 1, or \textit{Robert Arryn–Trystane Martell} (both merely referenced in one council scene) in Book 2.
+
+Because these walk-on characters are mentioned only in the company of the same handful of major protagonists,
+ they inherit identical neighbourhoods and thus appear structurally interchangeable.  
+In other words, a perfect Jaccard score points to characters who are basically duplicates in terms of their connections,
+ they don't have unique roles, but just appear alongside the same main characters to fill out the background.
+
+Instead, pairs with a coefficient of 0.0—for instance \textit{Addam Marbrand} versus almost any peripheral Night's Watch ranger—belong to completely separate storylines and never share a chapter.  Large blocks of zero-overlap pairs therefore quantify the strong modularity of the saga: characters rooted in King's Landing politics have no common neighbours with those beyond the Wall or in Essos until much later in the narrative.
+
+Taken together, the distribution of Jaccard values reinforces two points about the network.
+First, the extremely high scores cluster on peripheral nodes, confirming that "cameo" characters are weakly embedded and derive their few links from co-occurring with a single protagonist.
+Second, the abundance of zero scores shows how sharply the plot splits into parallel communities, especially in earlier books where geographical distance keeps casts disjoint.
+Methodologically, the Jaccard coefficient is thus useful both for spotting duplicate minor roles that could be collapsed in a simplified graph and for mapping the boundaries between major narrative arcs.
+\subsection*{Pearson Correlation} 
+The Pearson correlation coefficient looks at how similar two characters' "friend lists"
+ are across the whole graph: a value of +1 means their sets of neighbours 
+ rise and fall in perfect pace, while numbers near 0 (or negative) show 
+ that the two characters move in very different circles. In our networks the pairs
+  that hit +1 are almost always accompanying roles who only ever appear together
+   the same major figures., they are essentially background characters,  
+   but never build connections of their own. At the opposite end, the strongly negative
+    (or very low) scores belong to leading or secondary characters such as Tyrion, Jon,
+	 Daenerys and Catelyn. These protagonists operate in storylines that are geographically
+	 and socially far apart, so each gathers a unique entourage; the lack of overlap in their 
+	 neighbourhoods drives the correlation down, showing how the narrative 
+	 keeps its headline plots in distinct regions until the stories come together.
+\subsection*{Hamming Distance}
+
+The Hamming distance between two characters is just the number of positions where their strings are different.
+If the distance is high, the two characters have very different contact lists; if it is zero, they always meet exactly the same people.
+
+We see that the biggest distances are almost always between main heroes who live in separate story lines.
+In Book 1 the pair Eddard – Daenerys has a huge distance because Ned stays in Westeros while Dany is far away in Essos, so their neighbour sets never overlap.
+Later books show the same pattern: Tyrion vs Jon, or Daenerys vs Stannis, get the top scores because each one moves with a unique group of allies and enemies.
+
+On the opposite side, walk-on characters that appear together in the same single scene get a distance of zero (they share the exact same neighbours).
+So, like with Pearson and Jaccard, Hamming distance confirms that extras are clones in the graph, while protagonists are separated by their own, very different social circles.
+
+ 
+\subsection*{Regular Equivalence} 
+Regular equivalence generalizes structural equivalence to the idea of "playing similar roles" in the network,  even if not interacting with the exact same individuals.
+Regular equivalence looks at the graph from a role-oriented point of view: two characters are considered similar when each of them is linked to neighbours that, in turn, play comparable roles.
+To measure it we start with a similarity matrix $\sigma$ whose diagonal is one (a node is always identical to itself) and whose off-diagonal entries are zero.
+At every step we apply the update rule $\sigma \leftarrow \alpha\,A\,\sigma\,A^{\top}$, where A is the adjacency matrix of the network and $\alpha$ is a damping constant small enough to guarantee convergence; after each multiplication we reset the diagonal to one.
+A few iterations are sufficient for $\sigma$ to stabilise, and the final values tell us how strongly each pair of characters mirrors one another.
+
+The ranking produced by this procedure matches the narrative in an intuitive way.
+In Book1 the strongest equivalence is between Eddard Stark and Robert Baratheon, because both sit at the centre of the same political block in King's Landing—the king and his Hand share almost the same collection of allies and enemies.
+The next highest scores involve Cersei, whose position inside the royal triangle makes her structurally close to both Eddard and Robert.
+Moving to Book2, the algorithm identifies Tyrion and Joffrey as the most equivalent pair: Tyrion governs as acting Hand while Joffrey wears the crown, so they interact with virtually the same set of courtiers, guards and hostages.
+Cersei naturally remains near them, and even Stannis appears with a high score because, as a rival claimant, he reproduces the same "kingly" pattern in his own faction.
+Book3 keeps this Lannister cluster at the top but now adds Jaime, whose return to court gives him a neighbourhood almost indistinguishable from his siblings'.
+In Book4 the leadership template shifts to Cersei, Tommen and Margaery: the child-king and the two competing queens form a triad where every vertex is structurally tied to the other two and to the same Tyrell–Lannister power web.
+Finally, Book~5 exports the same royal scheme to Meereen, with Daenerys at the centre.  Her closest equivalents are Hizdahr, who becomes her political husband, and Barristan, who replaces Jorah as chief advisor; Quentyn, Daario and the other Meereenese notables score slightly lower but still reflect the same courtly role.
+
+These patterns show that, even when the plot moves across continents, the social graph keeps re-using a limited set of structural templates—kings and queens, counsellors, heirs, pretenders-and regular equivalence is able to detect those templates automatically.
+\subsection*{Homophily - Assortative Mixing}
+
+Homophily in our networks has been measured through the degree assortative coefficient, that is, the Pearson correlation between the degrees of the two endpoints of every edge.
+For the five books we obtain -0.166, -0.125, -0.133, -0.137 and -0.185; on the aggregated graph the value is -0.133.
+All numbers are negative, therefore the saga is disassortative: high-degree nodes prefer to link with low-degree nodes instead of other hubs.
+In practice this means that each superstar character acts as the centre of a local star, surrounded by minor figures that seldom interact among themselves.
+The result fits the narrative: Westeros is huge, the cast is enormous, and most secondary names appear only to orbit one of the protagonists.
+
+The trend across volumes is also meaningful. Book 2 shows the least negative value (-0.125), because the plot is still concentrated in King's Landing; many characters share a similar number of contacts and the graph looks less star-shaped.
+By Book 5 the coefficient drops to -0.185.  At this point the story splits into distant theatres: Jon at the Wall, Tyrion on the run, Daenerys in Meereen, Stannis in the North.  Each lead character meets dozens of local extras, boosting the difference between their degree and that of their partners and making the network even more disassortative.
+In short, the negative assortativity quantifies the strongly hierarchical structure of Martin's world, where a handful of hubs mediate almost every social interaction.
+
+\subsection*{Small-World Effect} 
+
+All our character networks satisfy the classical "small-world'' condition.
+For every book we computed the two standard indicators, 
+$\sigma$ and $\omega$.
+A graph is considered small-world when $\sigma>1$ or, equivalently, when $\omega$ is close to zero.
+Book 1 already meets the requirement with $\sigma=1.64$ and $\omega=-0.07$, and the effect grows stronger through the series: $\sigma$ rises from $2.21$ in Book 2 to $2.81$ in Book 5, while $\omega$ stays in the narrow band $[-0.19,-0.07]$.
+The aggregated five-book graph shows the same pattern, $\sigma=2.31$ and $\omega=-0.07$.
+
+In practice this means that the story world is highly clustered families, 
+courts and war camps produce many local triangles but, at the same time, 
+any two characters are separated by only a few steps. 
+Bridging figures such as Varys, Littlefinger, 
+Tyrion or, later, Jon Snow and Daenerys act as 
+shortcuts that link distant communities, keeping the average path length almost as low 
+as in a random graph.  The monotonic increase of $\sigma$ from Book 1 to Book 5 reflects
+ the geographic expansion of the plot: clustering grows because each new region adds its
+  own dense sub-cast, yet the presence of travelling protagonists and frequent cross-mentions
+   prevents the network from fragmenting, so the overall structure remains a textbook small world.
+
+
+\subsection*{Degree Centrality} 
+The log–log plots of degree centrality show a long tail: many characters have just one or two links, while a few "stars" (for example Tyrion, Daenerys or Eddard in their own books) collect a lot of connections.
+We tried to fit the tail with a power law and obtained an exponent $\alpha$ that is not between 2 and 3, so the decay is steeper than in a classical scale-free network. In other words, our story graph has hubs. Because of this, random failure is dangerous: if we remove nodes without thinking, the chance to hit one of the big hubs is high and the graph can break apart quickly. From a narrative point of view it makes sense because most minor characters orbit around a small set of protagonists, so losing one key figure would disconnect many sub-plots at once.
+\subsection*{Eigenvector Centrality}
+Eigenvector centrality tells us who is important because they are linked to other important people.
+In every single book the blue histogram on the left part of the figure is extremely skewed: most characters sit in the first bar, with a value smaller than $1$, while just a handful reach two, ten or even one hundred.  The cumulative curve on the right climbs slowly at the beginning and then rises very fast when it meets the first "elite" nodes; this shape is almost the same for Book 1, Book 2 and Book 3, gets a bit steeper in Book 4 and becomes even steeper in Book 5.  When we merge all books together the tail stretches over two full orders of magnitude, confirming that the saga always builds its plot around a micro-group of "star" characters whose prestige radiates through the whole network.
+
+The pattern is intuitive: a king like Robert, a queen like Cersei or a leader like Daenerys does not only have many contacts, they are also directly connected to other high-status figures, so their eigenvector score explodes.  Minor knights, servants and one-chapter guests, instead, talk mainly to people as marginal as themselves and therefore keep a tiny value.  Because of this pyramidal structure the distribution cannot be fitted by a nice power law with an exponent between $2$ and $3$, so the network is not scale-free in the strict mathematical sense.  Nevertheless the evidence of a long heavy tail, together with the log–log straight segments that appear in the cumulative plots, tells us that power-law mechanisms are still present: the rich get richer, and the narrative keeps pushing attention towards the same protagonists while it introduces armies of low-impact side characters who quickly vanish from the story.
+
+\subsection*{Closeness Centrality}
+Closeness looks at distance: a character has high closeness if,
+on average, she can reach every other node through only a few narrative "hops".
+
+
+The histograms are bell shaped instead of heavy-tailed: most characters share a similar, medium closeness, while only a handful sit markedly closer to everyone else.  Those peaks correspond to the obvious hubs of the story, Eddard in \emph{Book1}, Tyrion in \emph{Book2-3}, Cersei in \emph{Book4}, and Daenerys plus Jon in \emph{Book5}.
+From \emph{Book1} to \emph{Book5} the centre of the distribution drifts a little to the right, meaning that the typical distance among nodes becomes shorter: even if the cast grows, the narrative keeps adding shortcuts (for instance the war councils in the North and the royal courts in Meereen) that glue the network together.
+When we put all books in a single graph the curve stretches further, 
+yet the cumulative function on the right panel still reaches $F(x)\approx1$ 
+very quickly; this tells us that the saga preserves a strong "small-village" feeling: 
+information and conflict can spread almost everywhere in  few moves.
+
+\subsection*{Betweenness Centrality}
+The distribution of betweenness centrality highlights the narrative function of broker characters throughout the saga. In the first book the log–log histogram shows a very tall bar at values close to zero followed by a steep single–tailed decay that ends around ten. Most nodes therefore mediate no flow at all, while a handful act as genuine conduits; in story terms figures such as Tyrion, Cersei, Varys, and Littlefinger connect otherwise distant plots like Winterfell, the Wall, and the Dothraki sea.
+
+In the second book the tail stretches slightly and additional bars appear between five and ten. The War of the Five Kings multiplies fronts and forces new intermediaries, for example Brienne or Davos, to occupy geodesic paths that had not existed before. The network becomes somewhat more integrated yet remains strongly hierarchical.
+
+The third book displays the fattest tail of the series, indicating a larger number of bottlenecks. Many story lines converge in ensemble events such as the Red Wedding, and secondary characters linked to the Freys or the Boltons suddenly gain brokerage power before the plot fragments again.
+
+In the fourth book the tail contracts: the narrative disperses across Dorne, Braavos, and the Iron Islands, so only a few actors centralise the traffic of information. Under these conditions betweenness is concentrated in a very small set of couriers or envoys who keep minimal ties among nearly independent arcs.
+
+The fifth book widens the tail once more as new intersections arise among Jon, Stannis, and the diplomats of Meereen. Despite the geographic distance, characters like Jon, Tyrion, and Barristan reconnect clusters that would otherwise remain isolated, restoring some structural cohesion to the network.
+
+When all books are merged the distribution takes the typical power-law form: an enormous mass of characters with negligible betweenness and a tiny elite that is always crucial. This confirms that the saga is scale–free: the bulk of the story is sustained by a few recurring brokers, while the majority stays peripheral.
+
+Compared with eigenvector and closeness centrality, betweenness is the most unequal measure: more than seventy per cent of the nodes fall into the first histogram bin, whereas fewer than five per cent exceed double-digit values. Temporal evolution also reveals abrupt jumps: the death or exile of a key broker causes an immediate collapse of the index, while a successor records a sharp rise.
+
+\subsection*{Local Clustering Coefficient}
+The scatterplots that compare the average local clustering coefficient 
+with degree centrality show a clear increase in every single book and in the combined network.
+
+Characters with many interactions also belong to tightly knit neighbourhoods whose members
+ are highly connected to each other, so the coefficient quickly rises toward one for medium
+ to high degrees and then levels off. In contrast, characters on the edge of the story 
+ have only a few links and much lower clustering, which means they appear in sparse or 
+ short-lived contexts. This result matches the way the plot is organised. 
+ 
+ The narrative moves across several separate locations such as Winterfell, King's Landing, 
+ the Wall, and Essos, each with a fairly stable group of characters who mainly talk among 
+ themselves.
+ 
+ Within each location the social network is almost a clique, 
+ so once a character becomes central there, the chance that any 
+ two of their contacts have also interacted is close to certain. 
+ This explains the flat top of the curves.
+   The different steepness at the beginning of the curves reflects the shifting narrative focus.
+   Books that emphasise court politics, especially Books 2 and 3, 
+   have steeper slopes because the royal court is an exceptionally 
+   dense conversational hub, while Book 4, which spreads attention over more places, 
+   has a gentler rise. 
+   
+   Overall, the plots show that being a popular character is not only a personal trait but also a feature that emerges inside cohesive local communities whose members often appear together and exchange dialogue.
+
+\subsection*{Density}
+Network density is the fraction of all possible character pairs that actually interact. In Book 1 the density is 0.039, almost four percent of the potential links, because the narrative stays mostly inside King's Landing and around the Stark family so the same characters keep meeting each other. Density then falls to 0.023 in Book 2, 0.022 in Book 3, 0.018 in Book 4, and 0.015 in Book 5. Each new volume adds more characters and splits the plot across distant places and independent story lines, which leaves many more potential links unrealised and makes the network sparser. When the five books are combined the density drops to 0.009, under one percent, because the roster of characters grows much faster than the number of interactions and most ties remain confined within local subplots.
+
+\subsection*{Connectedness}
+The connectedness index is equal to one for every book and for the combined network. This index ranges from zero for a graph that breaks into separate pieces to one for a graph where every node can reach every other through some path. All the Game of Thrones interaction graphs are undirected and contain a single component, so any character is reachable from any other character.
+\subsection*{Compactness}
+Book 1 shows the greatest compactness at about 0.193, while Books 2 and 3 drop to roughly 0.165. Compactness falls further in Books 4 and 5, hovering near 0.15, and the full five-book network sits at approximately 0.160. These numbers are well below one, so none of the graphs are highly compact. That outcome fits the narrative structure: the story spreads across distant regions, so many characters are separated by several intermediaries and cannot reach one another through short paths. Book 1 is relatively more compact because most of the action stays in King's Landing, keeping the main cast in closer contact.
+\subsection*{Transitivity}
+Transitivity tells us what share of all possible triangles in the network are really present. A value close to one means that whenever two characters both know a third character they are also likely to know each other, so the three form a closed triad. A value near zero means that these potential triangles stay open and the network is loosely wired. Book 1 reaches the highest transitivity with about 0.33, showing that the early plot keeps the main cast inside very tight conversational circles. The measure then falls to roughly 0.30 in Book 2 and 0.28 in Book 3, and drops further to around 0.22 in Book 4 and 0.20 in Book 5. When all five books are merged the score settles near 0.21. The steady decline reflects the growing geographic spread of the story: as the action splits across many distant locations the chance that every pair of a character's contacts also meet each other becomes smaller, so closed triangles become rarer.
+\subsection*{Centralisation and Core-periphery Indices}
+Centralisation tells us whether a few characters dominate the web of relations. In Book 1 degree centralisation is about 0.32, clearly higher than in the other volumes, so the first novel looks most like a star where a handful of names gather many links. Betweenness centralisation, which tracks control over the shortest paths, rises steadily from roughly 48 in Book 1 to more than 140 in Book 5. This growth shows that while degree inequality weakens after the opening volume, the later books give even more routing power to a small elite that sits on the critical bridges between story lines.
+
+Core periphery analysis confirms the picture. 
+When we split the graph by degree Book 1 produces a compact core of seventy 
+one nodes surrounded by a looser rim of one hundred sixteen,
+ and the minimum rho value indicates that connections inside the periphery are rare. 
+ The optimal core grows with the cast, reaching one hundred thirty seven nodes in Book 4,
+  but the periphery always remains at least as large, 
+  meaning that most characters still live on the margins of the social space. 
+  K-core decomposition paints an even sharper contrast. 
+  In Book 1 the eleven-core includes only twenty three very resilient nodes; 
+  by Book 5 the threshold drops to six before we can collect a comparable dense nucleus, 
+  yet even then only seventeen names satisfy the condition and the remaining three 
+  hundred form the periphery. Taken together these indices show that the saga begins 
+  with a strongly centralised court and then spreads out geographically and socially, 
+  but a tiny set of pivotal figures continues to hold the network together and to channel 
+  the flow of information across its many regions.
+
+  
 \section{Conclusion}
 \label{conclusion}
 
-Qualitative analysis of the quantitative findings of the study.
+This project was set out to map and analyze the social network of characets in A song of Ice and Fire series, and our findings show that network analysis can indeed illuminate the story's Complex character dynamics.
+
+By constructing a co-occurrence network for the five books, we identified key characters and examined how their roles change over time.
+
+The various centrality measures consistently pointed to the most influential figures in the narrative.  At the same time, the metrics revealed some interesting insights, like the fact that Stannis Baratheon had an unexpectedly high betweenness centrality in the overall network.
+
+This suggests that, despite not  having the most connections, Stannis serves as a crucial bridge between different storylines.
+
+Similarly, secondary characters like Varys and Petrys Baelish stood out for linking otherwise separate groups.
+
+
+
+Beyond individual characters, our analysis of the network’s structure uncovered patterns that align closely with the known factions and communities in the series. 
+Clique detection and k-core decomposition showed that many tightly knit groups of characters in the network correspond to formal groups in the story,
+ often members of the same house, location, or alliance. 
+ For instance, one of the largest cliques in Book 1 was composed of Eddard Stark, his family, and close associates at King Robert’s court, 
+ which reflects how these characters all interact in the same set of scenes. 
+ In later books, the highest-order k-cores isolated clusters like the King’s Landing court or the Night’s Watch enclave, 
+ mirroring the way the narrative splits into concurrent storylines. 
+
+ These structural findings give us confidence that the network representation captures real story dynamics. 
+ Global metrics further describe the shape of this fictional social world. 
+ We found the network to be disassortative, meaning that highly connected hub characters tend to interact with many minor characters rather than with each other. 
+ This produces a star-like hierarchy: each major character (a “hub” like Tyrion, Jon, or Daenerys) is surrounded by a circle of lesser-known characters, 
+ much as in the books most secondary characters chiefly revolve around a main figure. 
+
+ We also saw a clear small-world effect in Westeros: characters form locally clustered groups 
+ (families, courts, traveling parties), yet a handful of bridge characters connect these groups so that any two characters are only a few steps apart. 
+ This combination of very tight communities and short paths between characters reflects Martin’s storytelling, 
+ where the world is sprawling but key figures link distant regions and plots. 
+ 
+ Overall, the strong correspondence between our quantitative results and the novel’s narrative structure suggests that 
+ our network-based approach captured meaningful aspects of character importance and relationships.
+
+In summary, our work demonstrates the value of applying social network analysis to literature. We showed that numerical metrics can validate 
+and enrich our understanding of a complex story: 
+they confirmed known central characters, ranked characters by different notions of importance, 
+traced how those roles evolve from book to book, and uncovered the presence of distinct communities and bridging roles. 
+These insights complement traditional literary analysis by offering an evidence-based view of the story’s architecture. 
+
+The significance of our study lies in this interdisciplinary approach, 
+it connects computational methods with narrative analysis to shed light on how the story of Game of Thrones is structured. 
+
+By quantifying character interactions, we not only reinforced what readers intuitively know about the saga’s heroes and factions, 
+but also provided a new perspective on the social structure of the plot. 
+This approach could be extended to other large narratives as well, suggesting that network science is a promising tool for exploring the social networks of fiction.
+ 
+
+Future studies might build on this foundation by refining the network construction 
+ (for example, distinguishing different types of interactions or weighting connections by their strength) 
+ and by comparing our book-based network to other representations (such as the network in the television adaptation). 
+ In the end, our project highlights how blending data-driven analysis with literary insight can deepen our understanding 
+ of epic narratives like A Song of Ice and Fire.
 
 \section{Critique}
-\label{critique}
+Reflecting on our objectives, we believe that our work substantially solved the problem laid out in the introduction. 
+The main goal was to find and measure character importance in a sprawling story with many characters and intersecting plotlines. 
+In this respect, our analysis was quite successful: using social network metrics, 
+we identified the principal characters in each book and in the series overall, 
+and these largely matched the protagonists one would expect. We were able to quantify their importance from different angles
+like connectivity, influence, brokering roles, and track how those measures changed as the story progressed. 
 
-Do you think your work solves the problem presented above? To which
-extent (completely, what parts)? Why? What could you have done
-differently to answer your research problems (e.g., gather data with
-additional information, build your model differently, apply alternative
-measures)?
 
+
+However, while we successfully answered many of our questions, some aspects can be explored further.
+One reason is that character “importance” is a complex concept that cannot be fully captured by network centrality alone. 
+
+Our analysis measured importance in terms of network structure. Essentially, how connected or structurally pivotal a character 
+is in the co-occurrence graph. This did highlight narrative influence in many cases, but it might overlook characters who are important in more subtle ways. 
+For instance, a character could be crucial to the plot without interacting with many others (perhaps acting behind the scenes or in a single storyline), 
+and such a character would rank low in our network despite their narrative significance. In our findings, we saw that some characters known to be very 
+important to the story’s outcome did not score top ranks in every metric: this suggests that our method captures one dimension of importance,
+social connectivity, but not all dimensions (such as psychological or thematic importance). Additionally, the quality of our results depended 
+on the dataset and assumptions we used. We relied on a co-occurrence network extracted from the text, which is an approximation of the true interaction network.
+ 
+This approach sometimes connects characters who are merely mentioned together rather than directly interacting, and it treats all detected interactions as
+  equal. These simplifications mean that our solution, while effective, has limitations. Therefore, we would say our project addressed the 
+  research problem to a significant extent, it provided a strong structural analysis of character importance, 
+  yet it leaves out some storytelling subtleties that a purely network-based method cannot capture.
+
+There are several things we could have done differently to improve our answers to the research questions. 
+First, we could gather more or different data to refine the network. 
+Using the raw text of the novels with more advanced natural language processing might allow us to identify 
+interactions more accurately. 
+For example, distinguishing face-to-face dialogue from simple co-mentions, 
+or noting whether an interaction is friendly or hostile. 
+More detailed data could also include contextual information like chapter or location, 
+which might help filter out incidental co-occurrences and focus on meaningful connections. 
+Expanding the dataset beyond the books, for example by incorporating the TV show’s data or appendices that list character relationships,
+could provide additional perspective and help verify the patterns we found. 
+
+Second, we could use a different modeling approach for the network. Our current model is an unweighted, 
+undirected graph built on co-occurrence within a fixed word window. 
+A different approach might be to create a weighted network where edges have weights reflecting the strength or 
+frequency of interactions between characters.
+We could also consider a temporal or dynamic network model that evolves chapter by chapter or book by book, 
+rather than just comparing static snapshots per book. This might capture the evolution of character importance more continuously.
+Another modeling improvement would be to incorporate multiple types of relationships 
+(for example, distinguishing family ties, alliances, or enmities as different layers in a multiplex network). 
+Such richer models could better represent the story’s social complexity and possibly answer our questions more completely. 
+
+Third, we might apply alternative metrics or analytical techniques to gain new insights. 
+While we used a broad range of centrality measures and structural analyses, 
+there are other angles we could explore. 
+For instance, we could examine network resilience by simulating the removal of key characters to see how the structure breaks apart.
+This would tell us more about which characters are truly irreplaceable in the network. 
+We could also use community detection algorithms to automatically find groups of characters and compare those to known factions, 
+rather than relying only on cliques and cores. 
+Another idea would be to correlate our network-based rankings of character importance with external measures 
+(such as how many chapters are told from a character’s perspective or fan popularity polls) 
+to see if the network metrics align with other notions of importance. 
+
+In retrospect, incorporating some of these additional methods might have provided a deeper or more nuanced answer to our questions.
+
+In conclusion, our project made strong progress in solving the posed problem by using social network analysis to identify key characters and structural patterns in Game of Thrones. We achieved many of our goals by confirming major characters’ importance and uncovering the network’s features, but our solution is only partial in capturing the full richness of character importance. With more refined data, alternative modeling choices, and additional metrics, future work could address the remaining gaps. These improvements would allow for an even more comprehensive analysis, strengthening the bridge between quantitative network science and the qualitative art of storytelling.
 \end{document}
 
