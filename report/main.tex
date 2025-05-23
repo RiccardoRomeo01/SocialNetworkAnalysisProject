@@ -257,18 +257,33 @@ Our regular-equivalence analysis shows that each novel in A Song of Ice and Fire
 
 These patterns show that, even when the plot moves across continents, the social graph keeps re-using a limited set of structural templates—kings and queens, counsellors, heirs, pretenders-and regular equivalence is able to detect those templates automatically.
 
-\subsection*{Homophily - Assortative Mixing}
+\subsection*{Homophily – Assortative Mixing}
 
-Homophily in our networks has been measured through the degree assortative coefficient, that is, the Pearson correlation between the degrees of the two endpoints of every edge.
-For the five books we obtain -0.166, -0.125, -0.133, -0.137 and -0.185; on the aggregated graph the value is -0.133.
-All numbers are negative, therefore the saga is disassortative: high-degree nodes prefer to link with low-degree nodes instead of other hubs.
-In practice this means that each superstar character acts as the centre of a local star, surrounded by minor figures that seldom interact among themselves.
-The result fits the narrative: Westeros is huge, the cast is enormous, and most secondary names appear only to orbit one of the protagonists.
+Homophily is measured through the \emph{degree assortativity coefficient}, the Pearson correlation between the degrees of the two nodes at every edge.  
+Across the five novels the coefficients are
+\[
+-0.166,\;-0.125,\;-0.133,\;-0.137,\;-0.185,
+\]
+and the aggregate network yields \(-0.133\).
 
-The trend across volumes is also meaningful. Book 2 shows the least negative value (-0.125), because the plot is still concentrated in King's Landing; many characters share a similar number of contacts and the graph looks less star-shaped.
-By Book 5 the coefficient drops to -0.185.  At this point the story splits into distant theatres: Jon at the Wall, Tyrion on the run, Daenerys in Meereen, Stannis in the North.  Each lead character meets dozens of local extras, boosting the difference between their degree and that of their partners and making the network even more disassortative.
-In short, the negative assortativity quantifies the strongly hierarchical structure of Martin's world, where a handful of hubs mediate almost every social interaction.
+\begin{itemize}
+  \item \textbf{Disassortative structure.}  
+        All coefficients are negative, so high-degree “hub” characters tend to connect with low-degree “peripheral” ones rather than with each other.  
+        Each protagonist forms a local star: a central figure surrounded by minor characters who seldom interact among themselves—faithful to the vast, hierarchical world of Westeros.
 
+  \item \textbf{Evolution across books.}
+        \begin{itemize}
+          \item \textbf{Book~2 (\(-0.125\)).}  
+                The weakest disassortativity. Action is still clustered in King’s Landing, many characters share similar numbers of contacts, and the graph is less star-shaped.
+
+          \item \textbf{Book~5 (\(-0.185\)).}  
+                The strongest disassortativity. The narrative has splintered into distant theatres—Jon at the Wall, Tyrion on the run, Daenerys in Meereen, Stannis in the North.  
+                Each lead gathers a new entourage of local extras, widening the degree gap between hub and neighbour.
+        \end{itemize}
+\end{itemize}
+
+\medskip
+In short, the increasingly negative assortativity quantifies the saga’s hierarchical social fabric: a handful of hubs mediate most interactions, and that hierarchy grows sharper as the plot spreads across continents.
 \subsection*{Small-World Effect} 
 
 All our character networks satisfy the classical "small-world'' condition.
