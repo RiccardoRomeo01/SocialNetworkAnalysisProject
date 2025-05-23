@@ -17,7 +17,7 @@
 \graphicspath{{img-tables/}}
 
 \author{Mattia Buzzoni, Artificial Intelligence Master Degree, ID number 0001145667
-\\Leonardo Mannini, Artificial Intelligence Master Degree, ID number 
+\\Leonardo Mannini, Artificial Intelligence Master Degree, ID number 0001135209
 \\Mirko Mornelli, Artificial Intelligence Master Degree, ID number 0001113084
 \\Riccardo Romeo, Artificial Intelligence Master Degree, ID number 0001145681
 \\Diego Rossi, Artificial Intelligence Master Degree, ID number 0001138652}
@@ -94,18 +94,55 @@ For internal consistency, we made sure to do the analysis the same way for each 
 To measure the roles and importance of characters in the network, we calculated several centrality measures and other graph metrics. Each of these measures shows a different side of a character's importance or position in the social network. Below, we will briefly explain each metric and then talk about what we found for each book and for the whole series.
 
 \subsection*{Degree Centrality}
-The easiest measure, degree centrality, is just the number of connections (edges) each node has. In our case, a character's degree is the number of other characters they co-occur with in the text. A high degree means the character interacts with or is mentioned with many others, making them a center of the network. For instance, if a character is in scenes with 10 different characters, their degree centrality is 10. This measure naturally shows a character's visibility and direct involvement in the story. In our study, Tyrion Lannister has the highest degree centrality (based on co-occurrence counts) in all five books. This means that, by this measure, Tyrion is connected to the most other characters (he has the biggest network of co-occurrences in the story). Tyrion's job as a counselor and his travels bring him into contact with many different characters (from Lannisters and Starks to the Night's Watch and Essos characters). This probably explains his consistently high degree. Other characters with high degree centrality are Eddard Stark in Book 1 (when, as Hand of the King, he interacts with many people in King's Landing) and Jon Snow in later books as his story at the Wall and beyond grows. Degree centrality gives a basic ranking of characters by how connected they are, but it doesn't look at who they are connected to.
+Degree centrality, 
+is the number of edges each node has. 
+A high degree means the character interacts with or is
+ mentioned with many others, making them a center of the network. 
+ For instance, if a character is in scenes with 10 different characters,
+  their degree centrality is 10. 
+  This measure naturally shows a character's
+   visibility and direct involvement in the story. 
+   In our study, Tyrion Lannister has the highest 
+   degree centrality in all five books. 
+     Tyrion's job as a counselor and his travels bring him into 
+     contact with many different characters.
+      Degree centrality gives a basic ranking of characters 
+      by how connected they are, but it doesn't look at who 
+      they are connected to.
 
 \subsection*{Eigenvector Centrality}
-Eigenvector centrality is a more advanced measure of influence. It looks at the quality of connections, not just the number. Basically, eigenvector centrality gives higher scores to nodes connected to other highly connected nodes. So, a character connected to many important characters will get a higher eigenvector score than one with the same number of connections but only to minor characters. This measure can show characters who are at the center of the main network groups. Our results for eigenvector centrality were very similar to the degree centrality rankings for the top characters – main characters like Tyrion, Jon Snow, Daenerys Targaryen, and Cersei Lannister scored high. This suggests that these characters not only have many connections but are also connecting to each other or to other key people, forming a close-knit core of important characters. On the other hand, a character like Daenerys is an interesting example: in the early books, her degree might be fairly high (she interacts with her Dothraki followers and a few others). But since those connections are mostly to minor or isolated characters (outside the main Westeros network), her eigenvector centrality was lower in the early story. As Daenerys's influence grows (and she starts interacting with more important characters by Book 5), her eigenvector centrality goes up. In short, eigenvector centrality helped confirm who the main influencers in the story are. It largely matched high-degree characters but gave extra proof that those characters are at the heart of the overall network.
+Eigenvector centrality is a more advanced measure of influence.
+ It looks at the quality of connections, not just the number, 
+ giving higher scores to nodes connected to other highly connected nodes.
+  This measure can show 
+   characters who are at the center of the main network groups. 
+   Our results for eigenvector centrality were very simila
+    to the degree centrality rankings for the top characters 
+    – main characters like Tyrion, Jon Snow, Daenerys Targaryen,
+     and Cersei Lannister scored high. This suggests that 
+     these characters not only have many connections but are also
+      connecting to each other or to other key people, forming a 
+      close-knit core of important characters. On the other hand,
+       a character like Daenerys is an interesting example: in 
+       the early books, her degree might be fairly high.
 
 \subsection*{Katz Centrality}
-Katz centrality is an extension of eigenvector centrality: every character starts with a small baseline score and then gains additional influence from walks of length two, three, and so on, each step counting a little less than the previous one. PageRank, which follows exactly that logic, imagines a random reader who jumps from one co-occurrence edge to the next and tallies how often each character is visited. In an undirected graph like ours, Katz and PageRank give almost the same ordering, acting as a softened version of eigenvector centrality that can still reward someone who reaches the hubs through indirect paths.
+Katz centrality is an extension of eigenvector centrality:
+ every character starts with a small baseline score and then
+  gains additional influence from walks of length two, three, 
+  and so on, each step counting a little less than the previous one. 
+  
 
-When we compute the measure on the full five-book network, Tyrion Lannister emerges as the first one,
- with Jon Snow in a close second place. Immediately behind them come Jaime Lannister, Cersei Lannister, and Stannis Baratheon. Jon's score climbs book after book, reflecting how his storyline gradually connects the Night's Watch, the wildlings, the northern houses, and even the Iron Throne via correspondence. Tyrion, however, remains slightly ahead overall because his arc keeps him in contact with an exceptional variety of factions from the very beginning—royal court, riverlands armies, Essosi travellers, and more.
+When we compute the measure on the full five-book network, 
+Tyrion Lannister emerges as the first one,
+ with Jon Snow in a close second place. 
+ Immediately behind them come Jaime Lannister, 
+ Cersei Lannister, and Stannis Baratheon. Jon's score climbs book 
+ after book, reflecting how his storyline gradually connects the 
+ Night's Watch, the wildlings, the northern houses, and even the 
+ Iron Throne via correspondence. 
 
-The Katz/PageRank ranking therefore reinforces what simpler measures already indicated, 
+This metric  reinforces what simpler measures already indicated, 
 Tyrion and Jon dominate the narrative, but it adds something. 
 It shows Jon's influence catching up over time and highlights 
 characters such as Stannis and Arya, who do not have the 
@@ -114,22 +151,84 @@ highest degree counts yet serve as effective conduits that
 
 
 \subsection*{Closeness Centrality}
-Closeness centrality measures how close a character is to all other characters in the network, based on graph distance. Officially, it's the inverse of the average shortest path length from one node to all other nodes. A character with high closeness centrality can reach every other character through just a few steps on average. Since closeness centrality uses shortest path calculations, it's usually calculated for connected graphs or within connected parts of a graph. For networks with many disconnected parts (which can happen in our book-specific networks, especially early on), the distances between nodes in different parts would be infinite. So, we focused our closeness analysis on the largest connected part of each book's network. This part usually has all the main characters from the central storylines. In that main part, we found that characters like Tyrion and Cersei Lannister often had some of the shortest average distances to others. This is logical: Tyrion interacts with many groups (giving him short paths to groups he doesn't know directly). Cersei is in a central place in King's Landing and interacts with various people (court, Tyrells, Martells by letter, etc.), so she's never far from any storyline. Interestingly, Littlefinger (Petyr Baelish) also had a fairly high closeness centrality in the early books. He has connections to the Starks (through Catelyn), the Lannisters (by serving on the council), and others, making him an almost universal connector in the network. So, closeness centrality highlighted characters who act as hubs connecting communities, though it mostly pointed to the same key people found by other measures. One drawback is that closeness doesn't explain why a character is close to others. For example, Varys the spymaster might be a short distance from all characters because he knows about everyone. But in the network, he seems close because he talks to many who then connect to others.
+Closeness centrality measures how close a character is to all 
+other characters in the network, based on graph distance. 
+Officially, it's the inverse of the average shortest path length 
+from one node to all other nodes. A character with high closeness 
+centrality can reach every other character through just a few steps 
+on average. 
+We found that characters like Tyrion and 
+ Cersei Lannister often had some of the shortest average 
+ distances to others. Tyrion interacts with 
+ many groups. Cersei is in a central place in King's Landing 
+ and interacts with various people, so she's never far from any storyline. 
+ Interestingly, Petyr Baelish also had a 
+ fairly high closeness centrality in the early books even if it is a secondary character,
+  making him an almost universal 
+ connector in the network. So, closeness centrality 
+ highlighted characters who act as hubs connecting 
+ communities.
 
 \subsection*{Betweenness Centrality}
-Betweenness centrality measures how often a node is on the shortest path between any two other nodes. It effectively finds the ``bridge'' characters in the network – those who connect different communities or whose presence is key for information to flow in the network. A character with high betweenness centrality might not have the most connections, but they are at important points between storylines. Our betweenness analysis gave some of the most interesting results, as it pointed out a few characters we didn't expect. For example, Stannis Baratheon had the highest betweenness centrality in the combined five-book network. This result seems surprising at first – Stannis is a major character but fairly isolated (he doesn't interact with many other main characters besides his own followers). However, the network structure explains it: Stannis and his group form a bridge between the King's Landing storyline and the Wall (and later the northern conflict). If you ``remove'' Stannis and his connecting nodes, the network splits – his followers (Davos, Melisandre, etc.) and their interactions with other groups would be cut off. So, Stannis acts as a vital link between otherwise separate groups (the Baratheon royal family and the Night's Watch/Wildling storyline). This is exactly what betweenness centrality finds. Similarly, Petyr Baelish (Littlefinger) and Varys had high betweenness in earlier books, as expected for characters who plot across different houses – they connect the Stark/Lannister conflict with the Tyrells, the Vale, etc., through their schemes. Another example is Arya Stark in the middle books: Arya travels through various regions (from the Riverlands to Braavos), meeting very different characters. In doing so, she connects parts of the story that would otherwise be unrelated. This gives her a medium-high betweenness for her degree. So, betweenness centrality showed which characters might act as bridges in the story. It's worth noting that betweenness didn't always match perceived plot importance. Some very central characters by other measures (like Daenerys or Jon in certain books) have storylines that are fairly separate, so they don't score high on betweenness because they don't act as links between different groups. On the other hand, characters who move between groups (even minor characters like Davos Seaworth or Melisandre) can have high betweenness. This shows that each centrality measure reveals a different aspect of the story's social structure. There is no single ``right'' way to measure the most important character; instead, each measure highlights different kinds of importance (popularity, influence, reach, ability to connect groups) in the story.
+Betweenness centrality measures how often a node is on the 
+shortest path between any two other nodes. It effectively 
+finds the ``bridge'' characters in the network, those who 
+connect different communities or whose presence is key for 
+information to flow in the network. A character with high 
+betweenness centrality might not have the most connections, 
+but they are at important points between storylines. 
+Our betweenness analysis gave some of the most interesting 
+results, as it pointed out a few characters we didn't expect. 
+For example, Stannis Baratheon had the highest betweenness 
+centrality in the combined five-book network. This result 
+seems surprising at first because Stannis is a major character but 
+fairly isolated (he doesn't interact with many other main characters 
+besides his own followers). However, the network structure explains 
+it: Stannis and his group form a bridge between the King's Landing 
+storyline and the Wall (and later the northern conflict). 
+If you ``remove'' Stannis and his connecting nodes, 
+the network splits – his followers 
+and their interactions with other groups would be cut off. 
+So, Stannis acts as a vital link between otherwise separate 
+groups.
+Similarly, Petyr Baelish and Varys had high 
+betweenness in earlier books
+So, betweenness centrality 
+showed which characters might act as bridges in the story. It's 
+worth noting that betweenness didn't always match perceived plot 
+importance. Some very central characters by other measures 
+ have storylines that are fairly separate, 
+ so they don't score high on betweenness 
+because they don't act as links between different groups. 
+On the other hand, characters who move between groups 
+can have high betweenness. This shows that each centrality 
+measure reveals a different aspect of the story's social structure. 
+
 
 \subsection*{Central Characters Across Books}
-Looking at these measures for each book, we found several characters who are always central, as well as some changes that show how the story develops. Figure showing degree centrality) would list the top-ranked characters. A few names seem to be at the top of the network measures all the time: Tyrion Lannister and Jon Snow are the main ones. Tyrion, as we said, has the highest degree centrality (based on co-occurrence) in the comprehensive 5 books. This suggests he is the character with the most co-occurrences across the whole series. Jon Snow starts with a smaller group at Winterfell and then the Night's Watch, but he becomes more important. By the later books, he is among the top characters in degree and is said to have the highest PageRank of all. In fact, Tyrion and Jon are in the top 3 characters for almost every centrality measure we used, which shows their major roles in the story. The fact that different measures point to the same people suggests that by the middle to end of the series, the story focuses heavily on a few main characters. Other characters who are always near the top include Daenerys Targaryen, Cersei Lannister, and Arya Stark – all main characters with their own storylines. Daenerys, for example, becomes more connected (so her measures improve) as her dragons and army get attention from Westeros (characters start talking about or interacting with her messengers). Cersei is especially central in Book 4 (when she is a point-of-view character leading the King's Landing plot). This is shown by a jump in her centrality measures for that book. Arya's network importance grows when she is in Westeros (Books 1-3) and then lessens a bit when she goes to Braavos (where she is separate from the main characters). Our measures seem to show this too, with Arya having high centrality early on, then dropping when her story takes a different path.
+Across every volume the same pattern repeats: 
+a very small core of nodes dominates the network, 
+while the vast majority stay marginal.
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.8\textwidth]{deg-cent-all.png}
-\caption{Degree Centrality for all Books.}
-\label{fig:deg_cent_all}
-\end{figure}
+Degree and eigenvector scores show that these central 
+nodes accumulate many links and are tied to others 
+who are themselves well connected. Katz and closeness 
+confirm their reach, since only a few steps are needed 
+to reach most of the graph from them. Betweenness adds 
+a complementary view, revealing that even a node with 
+moderate activity can be crucial if it lies between the main clusters. 
 
-We also observe that the overall network structure evolves with each book, and the centrality measures quantitatively reflect the shifts in narrative focus. In Book 1 (A Game of Thrones), Eddard ``Ned'' Stark is a central figure – he has one of the highest degrees and a very high betweenness (as the Hand of the King, Ned links the northern Stark family with the southern court, bridging two communities). Indeed, Ned Stark was arguably the protagonist of Book 1 and our analysis supports his importance: he ranks at or near the top in multiple metrics for that book. However, after Book 1 (following Ned's death), we see a redistribution of centrality. No single character completely replaces Ned as the main focal point; instead, the narrative branches out. Book 2 introduces multiple epicenters – Tyrion Lannister (as acting Hand) becomes a new political center, Jon Snow's storyline at the Wall gains prominence, and Robb Stark leads a campaign in the Riverlands. As a result, the network in Book 2 appears more decentralized. For instance, the degree centralization of the network, a measure of how much the network is dominated by a single central node (ranging from 0 for a regular graph to 1 for a perfect star graph), reportedly dropped from ~0.32 in Book 1 to ~0.18 in Book 2, reflecting a more distributed story where influence is less concentrated. By Book 3 (A Storm of Swords), many storylines converge due to the war: characters like Robb Stark and Tywin Lannister move to the forefront alongside Tyrion, Jon, and Daenerys. We see multiple high-centrality characters in Book 3, and interestingly, the metrics start to converge: the set of top characters by degree, eigenvector, and betweenness become more similar, as the narrative's main threads entwine (for example, Tyrion, Jon, and Daenerys are all top-ranked in several measures). In Book 4 (A Feast for Crows), the focus shifts mostly to King's Landing and the south (with Jon and Daenerys temporarily off-page or in separate volumes), so we note Cersei Lannister and Brienne of Tarth rising in centrality for that book. Cersei in Book 4 has one of the highest betweenness and degree values, because the entire political plot of that book revolves around her, and she interacts with many secondary characters (council members, Tyrells, etc.). Brienne, while not having the highest degree, has high betweenness in Book 4 as she physically travels and connects the King's Landing plot to the Riverlands (searching for Sansa, encountering various characters). Finally, Book 5 (A Dance with Dragons) brings back Tyrion, Jon, and Daenerys to prominence. In that book, Jon Snow achieves very high centrality: he interacts with Stannis's faction, the Night's Watch, wildlings, and via letters even communicates with Ramsay Bolton, making him a key bridge. Daenerys, too, has a high degree in Book 5 as many new characters (mercenaries, nobles of Meereen, etc.) connect to her. These trends are highlighted in Figure~\ref{fig:deg_cent_evolution}: for instance, Ned Stark's centrality line drops off after Book 1, while Tyrion's remains high throughout, and Jon's climbs toward Book 5. The dynamic nature of the network thus seems to mirror the narrative's progression – as characters are introduced or removed, or move to different locations, the network connectivity shifts accordingly.
+The rank order of the top positions is remarkably stable. 
+When the storyline shifts location or a viewpoint is removed, 
+a temporary rise or fall in one metric may appear, yet the global
+ hierarchy re-establishes itself in the next book. 
+ This suggests that the narrative quickly promotes new spokespeople 
+ for each arena while preserving an overall hub-and-spoke architecture.
+
+These metrics indicate that visibility, 
+ influence and brokerage concentrate in a persistent 
+ leadership set of characters, whereas peripheral figures remain 
+ confined to local contexts and rarely alter the broader structure.
 
 \begin{figure}[htbp]
 \centering

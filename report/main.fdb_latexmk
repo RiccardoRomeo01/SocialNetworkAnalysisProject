@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1747934411 "/Users/leonardomannini/SocialNetworkAnalysisProject-1/report/main.tex" "main.pdf" "main" 1747934412
-  "/Users/leonardomannini/SocialNetworkAnalysisProject-1/report/main.tex" 1747934410 72075 14a5dec876e8f12a6e786e1186959f82 ""
+["pdflatex"] 1747988808 "/Users/leonardomannini/SocialNetworkAnalysisProject-1/report/main.tex" "main.pdf" "main" 1747988809
+  "/Users/leonardomannini/SocialNetworkAnalysisProject-1/report/main.tex" 1747988807 51740 edd39951581cd4a58a1b4133664f085b ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm" 1136768653 1408 5937f58aa508ea2cea4901c07d10f5fe ""
@@ -8,6 +8,7 @@
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm" 1136768653 2172 fd0c924230362ff848a33632ed45dc23 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm" 1136768653 4524 6bce29db5bc272ba5f332261583fee9c ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/adobe/times/ptmb8t.tfm" 1136768653 6880 f19b8995b61c334d78fc734065f6b4d4 ""
+  "/usr/local/texlive/2022/texmf-dist/fonts/tfm/adobe/times/ptmr8c.tfm" 1136768653 1352 fa28a7e6d323c65ce7d13d5342ff6be2 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm" 1136768653 4408 25b74d011a4c66b7f212c0cc3c90061b ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/adobe/times/ptmr8t.tfm" 1136768653 6672 e3ab9e37e925f3045c9005e6d1473d56 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/adobe/times/ptmri7t.tfm" 1136768653 2288 f478fc8fed18759effb59f3dad7f3084 ""
@@ -32,6 +33,7 @@
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/urw/times/utmr8a.pfb" 1136849748 46026 6dab18b61c907687b520c72847215a68 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/urw/times/utmri8a.pfb" 1136849748 45458 a3faba884469519614ca56ba5f6b1de1 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/vf/adobe/times/ptmb8t.vf" 1136768653 2340 df9c920cc5688ebbf16a93f45ce7bdd3 ""
+  "/usr/local/texlive/2022/texmf-dist/fonts/vf/adobe/times/ptmr8c.vf" 1136768653 3556 8a9a6dcbcd146ef985683f677f4758a6 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/vf/adobe/times/ptmr8t.vf" 1136768653 2348 91706c542228501c410c266421fbe30c ""
   "/usr/local/texlive/2022/texmf-dist/fonts/vf/adobe/times/ptmri8t.vf" 1136768653 2328 6cd7df782b09b29cfc4d93e55b6b9a59 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/vf/adobe/times/zptmcm7m.vf" 1136768653 1132 27520247d3fe18d4266a226b461885c2 ""
@@ -200,6 +202,7 @@
   "/usr/local/texlive/2022/texmf-dist/tex/latex/psnfss/ot1ptm.fd" 1137110629 961 15056f4a61917ceed3a44e4ac11fcc52 ""
   "/usr/local/texlive/2022/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd" 1137110629 329 aee7226812ba4138ac67a018466b488d ""
   "/usr/local/texlive/2022/texmf-dist/tex/latex/psnfss/t1ptm.fd" 1137110629 774 61d7da1e9f9e74989b196d147e623736 ""
+  "/usr/local/texlive/2022/texmf-dist/tex/latex/psnfss/ts1ptm.fd" 1137110629 619 96f56dc5d1ef1fe1121f1cfeec70ee0c ""
   "/usr/local/texlive/2022/texmf-dist/tex/latex/refcount/refcount.sty" 1576624809 9878 9e94e8fa600d95f9c7731bb21dfb67a4 ""
   "/usr/local/texlive/2022/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty" 1575674187 9715 b051d5b493d9fe5f4bc251462d039e5f ""
   "/usr/local/texlive/2022/texmf-dist/tex/latex/tools/verbatim.sty" 1622581934 7392 39729ae6a807e217edf1442cf8fab2c2 ""
@@ -209,11 +212,10 @@
   "/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1647878959 4410336 7d30a02e9fa9a16d7d1f8d037ba69641 ""
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1654686852 2826433 475b223a8fe29432c299f5396cde982e ""
   "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
-  "img-tables//deg-cent-all.png" 1747762448 37350 36cc9f46075c263bee51102629f1b954 ""
   "img-tables//deg-cent-evolution.png" 1747762528 148434 84a4b3c2590132a41fe08e03dbf146ca ""
-  "main.aux" 1747934412 2393 f22104b8bf63d6dc64457113933de093 "pdflatex"
-  "main.out" 1747934412 839 0397e89d702e31144f12f66cd4b1a72a "pdflatex"
-  "main.tex" 1747934410 72075 14a5dec876e8f12a6e786e1186959f82 ""
+  "main.aux" 1747988808 2169 1f10d3b4c1fce5c3963e6aec5e6d5ac9 "pdflatex"
+  "main.out" 1747988808 839 0397e89d702e31144f12f66cd4b1a72a "pdflatex"
+  "main.tex" 1747988807 51740 edd39951581cd4a58a1b4133664f085b ""
   (generated)
   "main.aux"
   "main.log"
