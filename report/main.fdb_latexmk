@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1747992781 "/Users/leonardomannini/SocialNetworkAnalysisProject-1/report/main.tex" "main.pdf" "main" 1747992783
-  "/Users/leonardomannini/SocialNetworkAnalysisProject-1/report/main.tex" 1747992780 52688 d4d0702afc43319b94bdf10af2a73949 ""
+["pdflatex"] 1748007407 "/Users/leonardomannini/SocialNetworkAnalysisProject-1/report/main.tex" "main.pdf" "main" 1748007411
+  "/Users/leonardomannini/SocialNetworkAnalysisProject-1/report/main.tex" 1748007407 40890 9a4b860644588caa46d88fd650483c8d ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm" 1136768653 1408 5937f58aa508ea2cea4901c07d10f5fe ""
@@ -215,15 +215,15 @@
   "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
   "img-tables//betweenness-all.png" 1747992027 151835 6a9236741fa4a78a5addcc6db451377a ""
   "img-tables//betweenness-distrib-book1.png" 1747992662 65282 6df3132327979610d47d83fece0343ea ""
+  "img-tables//clique_stark.jpeg" 1748002301 77648 9045109cf0e0415fdfdbd0b5c0a6c376 ""
   "img-tables//closeness-distrib-all-books.png" 1747992758 77516 2d914939df6c350014ac4f7f19c1a42b ""
   "img-tables//deg-cent-evolution.png" 1747762528 148434 84a4b3c2590132a41fe08e03dbf146ca ""
   "img-tables//deg-cent-log-book-2.png" 1747991180 67263 003c4f41cd7fd1805c0a5c0d8de592ab ""
-  "img-tables//eigenvector-book5.png" 1747991424 68328 91d3b8df72c0cea6950686d0c3aa91ac ""
   "img-tables//k-core-book2.png" 1747990904 264930 ba4c4a550579e3118ff36795f5730892 ""
   "img-tables//local_clust_all_books.png" 1747991895 47411 275c678bdfca8ebe32c07461a15fbe7a ""
-  "main.aux" 1747992782 4603 bea7333c2fb2e02fb4d6c9010721a387 "pdflatex"
-  "main.out" 1747992782 839 0397e89d702e31144f12f66cd4b1a72a "pdflatex"
-  "main.tex" 1747992780 52688 d4d0702afc43319b94bdf10af2a73949 ""
+  "main.aux" 1748007411 4253 5ec730127e405922a53dcd8298f9cf0c "pdflatex"
+  "main.out" 1748007411 839 0397e89d702e31144f12f66cd4b1a72a "pdflatex"
+  "main.tex" 1748007407 40890 9a4b860644588caa46d88fd650483c8d ""
   (generated)
   "main.aux"
   "main.log"

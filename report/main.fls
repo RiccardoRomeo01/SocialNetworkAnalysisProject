@@ -968,6 +968,11 @@ INPUT ./img-tables//betweenness-all.png
 INPUT img-tables//betweenness-all.png
 INPUT ./img-tables//betweenness-all.png
 INPUT ./img-tables//betweenness-all.png
+INPUT ./img-tables//clique_stark.jpeg
+INPUT ./img-tables//clique_stark.jpeg
+INPUT img-tables//clique_stark.jpeg
+INPUT ./img-tables//clique_stark.jpeg
+INPUT ./img-tables//clique_stark.jpeg
 INPUT ./img-tables//k-core-book2.png
 INPUT ./img-tables//k-core-book2.png
 INPUT img-tables//k-core-book2.png
@@ -1006,7 +1011,6 @@ INPUT /usr/local/texlive/2022/texmf-dist/fonts/vf/adobe/times/zptmcm7t.vf
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmr10.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/vf/adobe/times/ptmr8c.vf
-INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/adobe/times/ptmb8t.tfm
 INPUT ./img-tables//deg-cent-log-book-2.png
 INPUT ./img-tables//deg-cent-log-book-2.png
 INPUT img-tables//deg-cent-log-book-2.png
@@ -1018,13 +1022,6 @@ INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/rsfs/rsfs10.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/vf/adobe/times/zptmcm7m.vf
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/adobe/times/psyro.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmmi10.tfm
-INPUT /usr/local/texlive/2022/texmf-dist/fonts/vf/adobe/times/ptmb8t.vf
-INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm
-INPUT ./img-tables//eigenvector-book5.png
-INPUT ./img-tables//eigenvector-book5.png
-INPUT img-tables//eigenvector-book5.png
-INPUT ./img-tables//eigenvector-book5.png
-INPUT ./img-tables//eigenvector-book5.png
 INPUT ./img-tables//closeness-distrib-all-books.png
 INPUT ./img-tables//closeness-distrib-all-books.png
 INPUT img-tables//closeness-distrib-all-books.png
