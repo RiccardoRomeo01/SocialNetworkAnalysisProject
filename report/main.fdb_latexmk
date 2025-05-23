@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1747988808 "/Users/leonardomannini/SocialNetworkAnalysisProject-1/report/main.tex" "main.pdf" "main" 1747988809
-  "/Users/leonardomannini/SocialNetworkAnalysisProject-1/report/main.tex" 1747988807 51740 edd39951581cd4a58a1b4133664f085b ""
+["pdflatex"] 1747992781 "/Users/leonardomannini/SocialNetworkAnalysisProject-1/report/main.tex" "main.pdf" "main" 1747992783
+  "/Users/leonardomannini/SocialNetworkAnalysisProject-1/report/main.tex" 1747992780 52688 d4d0702afc43319b94bdf10af2a73949 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm" 1136768653 1408 5937f58aa508ea2cea4901c07d10f5fe ""
@@ -195,6 +195,7 @@
   "/usr/local/texlive/2022/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty" 1601326656 274 5ae372b7df79135d240456a1c6f2cf9a ""
   "/usr/local/texlive/2022/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty" 1601326656 325 f9f16d12354225b7dd52a3321f085955 ""
   "/usr/local/texlive/2022/texmf-dist/tex/latex/pgfplots/pgfplots.sty" 1496704190 4904 ee78b44e85d6fccf08cd99370557481e ""
+  "/usr/local/texlive/2022/texmf-dist/tex/latex/placeins/placeins.sty" 1137110565 4087 636308456f60d2b31cbf97867db5708d ""
   "/usr/local/texlive/2022/texmf-dist/tex/latex/psnfss/mathptmx.sty" 1586716065 4631 6e41de2b7a83dfa5d2c4b0a2fe01f046 ""
   "/usr/local/texlive/2022/texmf-dist/tex/latex/psnfss/omlztmcm.fd" 1137110629 411 12564a37a279e4e0b533cdf5e03eeb7c ""
   "/usr/local/texlive/2022/texmf-dist/tex/latex/psnfss/omsztmcm.fd" 1137110629 348 f4ce75d394e7d9ac12ca7aac4045ed77 ""
@@ -212,10 +213,17 @@
   "/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1647878959 4410336 7d30a02e9fa9a16d7d1f8d037ba69641 ""
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1654686852 2826433 475b223a8fe29432c299f5396cde982e ""
   "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
+  "img-tables//betweenness-all.png" 1747992027 151835 6a9236741fa4a78a5addcc6db451377a ""
+  "img-tables//betweenness-distrib-book1.png" 1747992662 65282 6df3132327979610d47d83fece0343ea ""
+  "img-tables//closeness-distrib-all-books.png" 1747992758 77516 2d914939df6c350014ac4f7f19c1a42b ""
   "img-tables//deg-cent-evolution.png" 1747762528 148434 84a4b3c2590132a41fe08e03dbf146ca ""
-  "main.aux" 1747988808 2169 1f10d3b4c1fce5c3963e6aec5e6d5ac9 "pdflatex"
-  "main.out" 1747988808 839 0397e89d702e31144f12f66cd4b1a72a "pdflatex"
-  "main.tex" 1747988807 51740 edd39951581cd4a58a1b4133664f085b ""
+  "img-tables//deg-cent-log-book-2.png" 1747991180 67263 003c4f41cd7fd1805c0a5c0d8de592ab ""
+  "img-tables//eigenvector-book5.png" 1747991424 68328 91d3b8df72c0cea6950686d0c3aa91ac ""
+  "img-tables//k-core-book2.png" 1747990904 264930 ba4c4a550579e3118ff36795f5730892 ""
+  "img-tables//local_clust_all_books.png" 1747991895 47411 275c678bdfca8ebe32c07461a15fbe7a ""
+  "main.aux" 1747992782 4603 bea7333c2fb2e02fb4d6c9010721a387 "pdflatex"
+  "main.out" 1747992782 839 0397e89d702e31144f12f66cd4b1a72a "pdflatex"
+  "main.tex" 1747992780 52688 d4d0702afc43319b94bdf10af2a73949 ""
   (generated)
   "main.aux"
   "main.log"
