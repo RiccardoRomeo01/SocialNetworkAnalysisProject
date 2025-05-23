@@ -353,33 +353,25 @@ Characters with many interactions also belong to tightly knit neighbourhoods who
    Overall, the plots show that being a popular character is not only a personal trait but also a feature that emerges inside cohesive local communities whose members often appear together and exchange dialogue.
 
 \subsection*{Density}
-Network density is the fraction of all possible character pairs that actually interact. In Book 1 the density is 0.039, almost four percent of the potential links, because the narrative stays mostly inside King's Landing and around the Stark family so the same characters keep meeting each other. Density then falls to 0.023 in Book 2, 0.022 in Book 3, 0.018 in Book 4, and 0.015 in Book 5. Each new volume adds more characters and splits the plot across distant places and independent story lines, which leaves many more potential links unrealised and makes the network sparser. When the five books are combined the density drops to 0.009, under one percent, because the roster of characters grows much faster than the number of interactions and most ties remain confined within local subplots.
+Network density is the fraction of all possible character pairs that actually interact. In Book 1 the density is 0.039 as the narrative stays mostly around the Stark family. Adding each new volume makes the network sparser, and when the five books are combined the density drops under one percent, because the roster of characters grows faster than the number of interactions.
 
 \subsection*{Connectedness}
-The connectedness index is equal to one for every book and for the combined network. This index ranges from zero for a graph that breaks into separate pieces to one for a graph where every node can reach every other through some path. All the Game of Thrones interaction graphs are undirected and contain a single component, so any character is reachable from any other character.
+The connectedness index is equal to one for every book and for the combined network, indicating a graph where every node can be linked to every other through some path. 
+
 \subsection*{Compactness}
-Book 1 shows the greatest compactness at about 0.193, while Books 2 and 3 drop to roughly 0.165. Compactness falls further in Books 4 and 5, hovering near 0.15, and the full five-book network sits at approximately 0.160. These numbers are well below one, so none of the graphs are highly compact. That outcome fits the narrative structure: the story spreads across distant regions, so many characters are separated by several intermediaries and cannot reach one another through short paths. Book 1 is relatively more compact because most of the action stays in King's Landing, keeping the main cast in closer contact.
+None of the graphs for the five books shows high compactness, with values ranging from 0.193 to 0.150 and the full five-book network sitting at 0.160. That outcome fits the narrative structure as the story spreads across distant regions and many characters are separated by several intermediaries. 
+
 \subsection*{Transitivity}
-Transitivity tells us what share of all possible triangles in the network are really present. A value close to one means that whenever two characters both know a third character they are also likely to know each other, so the three form a closed triad. A value near zero means that these potential triangles stay open and the network is loosely wired. Book 1 reaches the highest transitivity with about 0.33, showing that the early plot keeps the main cast inside very tight conversational circles. The measure then falls to roughly 0.30 in Book 2 and 0.28 in Book 3, and drops further to around 0.22 in Book 4 and 0.20 in Book 5. When all five books are merged the score settles near 0.21. The steady decline reflects the growing geographic spread of the story: as the action splits across many distant locations the chance that every pair of a character's contacts also meet each other becomes smaller, so closed triangles become rarer.
+Transitivity tells us what share of all possible triangles of characters in the network are really present. The measure falls from 0.33 in Book 1 to 0.20 in Book 5, and when all five books are merged the score settles near 0.21. The steady decline confirms the growing geographic spread of the story through the books. 
+
+
 \subsection*{Centralisation and Core-periphery Indices}
-Centralisation tells us whether a few characters dominate the web of relations. In Book 1 degree centralisation is about 0.32, clearly higher than in the other volumes, so the first novel looks most like a star where a handful of names gather many links. Betweenness centralisation, which tracks control over the shortest paths, rises steadily from roughly 48 in Book 1 to more than 140 in Book 5. This growth shows that while degree inequality weakens after the opening volume, the later books give even more routing power to a small elite that sits on the critical bridges between story lines.
+Centralisation tells us whether a few characters dominate the web of relations. In Book 1 degree centralisation is about 0.32, clearly higher than in the other volumes. Betweenness centralisation rises steadily from 48 in Book 1 to more than 140 in Book 5. This growth shows that the later books give more routing power to a small elite that sits on the critical bridges between story lines.
 
 Core periphery analysis confirms the picture. 
-When we split the graph by degree Book 1 produces a compact core of seventy 
-one nodes surrounded by a looser rim of one hundred sixteen,
- and the minimum rho value indicates that connections inside the periphery are rare. 
- The optimal core grows with the cast, reaching one hundred thirty seven nodes in Book 4,
-  but the periphery always remains at least as large, 
-  meaning that most characters still live on the margins of the social space. 
-  K-core decomposition paints an even sharper contrast. 
-  In Book 1 the eleven-core includes only twenty three very resilient nodes; 
-  by Book 5 the threshold drops to six before we can collect a comparable dense nucleus, 
-  yet even then only seventeen names satisfy the condition and the remaining three 
-  hundred form the periphery. Taken together these indices show that the saga begins 
-  with a strongly centralised court and then spreads out geographically and socially, 
-  but a tiny set of pivotal figures continues to hold the network together and to channel 
-  the flow of information across its many regions.
-
+When we split the graph by degree Book 1 produces a compact core of nodes surrounded by a looser rim, and the minimum rho value indicates that connections inside the periphery are rare. The optimal core grows with the cast, but the periphery always remains at least as large, meaning that most characters still live on the margins of the social space. 
+K-core decomposition paints an even sharper contrast. 
+In Book 1 the eleven-core includes only twenty three very resilient nodes; by Book 5 the threshold drops to six before we can collect a comparable dense nucleus, yet even then only seventeen names satisfy the condition and the remaining three hundred form the periphery. Taken together these indices show that the saga begins with a strongly centralised court and then spreads out geographically and socially, but a tiny set of pivotal figures continues to hold the network together and to channel the flow of information across its many regions.
   
 \section{Conclusion}
 \label{conclusion}
